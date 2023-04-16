@@ -16,12 +16,26 @@
 
     </head>
     <body class="antialiased">
-        <div class="page">
-            <div class="main-card"> <!-- TODO -->
-                <div class="main-card-picture">
-                </div>
-                <div class="main-card-form">
-                    <p style = "font-size: 220%; margin: 20px">Sylabus</p>
+        
+            
+                
+            <div class="panel-top"></div>
+
+            <div class="layout-panel-start">
+
+                <div class="sub-layout-panel-start">
+
+                    
+
+                    <div class="panel-action">Panel Action</div>
+
+                    <div class="panel-list">Panel List</div>
+
+                </div>           
+
+
+                <div class="panel-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png">
                     <p>
                         {{ $userName }}
                     </p>
@@ -31,8 +45,14 @@
                     <p>
                         {{ $databaseName }}
                     </p>
-                </div>
+                    <button class="custom-button-login">Edit</button>
+                    <button class="custom-button-login">Show</button>
+                    <button class="custom-button-login">Add</button>
+                    <button class="custom-button-login">Log out</button>
+                </div>  
+                
+                
             </div>
-        </div>
+        
     </body>
 </html>
