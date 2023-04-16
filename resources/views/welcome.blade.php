@@ -21,21 +21,28 @@
                 <div class="main-card-picture">
                 </div>
                 <div class="main-card-form">
-                    <p style = "font-size: 220%; margin: 20px">Sylabus</p>
-                    <form action="">
+                    <p style="font-size: 220%; margin: 20px">
+                        Sylabus
+                    </p>
+                    <form method="POST" action="{{route('logUser')}}">
                         @csrf
                         <table>
                             <tr>
                                 <td>Użytkownik</td>
                                 <td colspan="2">
-                                    <input type="text" class="custom-input">
-                                </td>
-                                
+                                    <input name="userName" type="text" class="custom-input">
+                                </td>                                
                             </tr>
                             <tr>
                                 <td>Hasło</td>
                                 <td colspan="2">
-                                    <input type="text" class="custom-input">
+                                    <input name="passwd" type="text" class="custom-input">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Baza</td>
+                                <td colspan="2">
+                                    <input name="databaseName" type="number" class="custom-input">
                                 </td>
                             </tr>
                         </table>
