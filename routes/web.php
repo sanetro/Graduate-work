@@ -16,7 +16,7 @@ use App\Http\Controllers\AuthenticationController;
 
 Route::get('/', function () {
     return view('welcome'); 
-});
+})->name('welcome');
 
 Route::post('/userpanel', 
 [AuthenticationController::class, 'logUser'])->name('logUser');

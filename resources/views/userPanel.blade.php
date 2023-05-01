@@ -35,7 +35,7 @@
 
 
                 <div class="panel-box">
-                    <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" class="img-icon-profile">
                     <p>
                         {{ $userName }}
                     </p>

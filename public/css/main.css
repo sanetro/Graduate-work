@@ -121,4 +121,6 @@ body {
     float: left;
 }
 
-
+.img-icon-profile {
+    scale: 0.6;
+}
