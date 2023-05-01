@@ -19,7 +19,11 @@
         
             
                 
-            <div class="panel-top"></div>
+            <div class="panel-top">
+                <ul>
+                    <a href="{{route('userPanel')}}"><li>Home</li></a>
+                </ul>
+            </div>
 
             <div class="layout-panel-start">
 
@@ -40,10 +44,10 @@
                         {{ $userName }}
                     </p>
                     <p>
-                        {{ $passwd }}
+                        {{ $role }}
                     </p>
                     <p>
-                        {{ $databaseName }}
+                        {{ $department }}
                     </p>
                     <button class="custom-button-login">Edit</button>
                     <button class="custom-button-login">Show</button>

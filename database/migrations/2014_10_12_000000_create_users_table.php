@@ -15,6 +15,18 @@ return new class extends Migration
             $table->increments('id');
             $table->string('email')->unique();
             $table->string('password');
+            /* For 'role'
+                0 - user (read-only)
+                1 - user.department (read-modify-restricted)
+                2 - user.council (read-modify-unrestricted)
+            */
+            $table->tinyInteger('role'); 
+            /* For 'department'
+                0 - department named "0"
+                1 - department named "1"
+                2 - department named "2"
+            */
+            $table->tinyInteger('department');
         });
     }
 

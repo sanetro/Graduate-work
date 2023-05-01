@@ -18,5 +18,8 @@ Route::get('/', function () {
     return view('welcome'); 
 })->name('welcome');
 
-Route::post('/userpanel', 
+Route::post('/login', 
 [AuthenticationController::class, 'logUser'])->name('logUser');
+
+Route::get('/userpanel', 
+[AuthenticationController::class, 'userPanel'])->name('userPanel');
