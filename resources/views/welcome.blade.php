@@ -24,7 +24,7 @@
                     <p style="font-size: 220%; margin: 20px">
                         Sylabus
                     </p>
-                    <form method="POST" action="{{route('logUser')}}">
+                    <form method="POST" action="{{route('login')}}">
                         @csrf
                         <table>
                             <tr>

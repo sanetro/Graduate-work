@@ -8,20 +8,18 @@ use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
     {
-    public function logUser(Request $r) {
-        
+    public function login(Request $r) {        
         // Request is data object and has login, passwd, database name from form
-        $userName = $r->input('userName');
+        $email = $r->input('userName');
         $passwd = $r->input('passwd');
-        $databaseName = $r->input('databaseName');
+        $database = $r->input('databaseName');
         $user = User::all()
-            ->where('email', '==', $userName)
+            ->where('email', '==', $email)
             ->where('password', '==', $passwd)
             ->first();
-
+        
         // if user exitst in DB go to userPanel
-        if ( $user) 
-        {
+        if ($user) {
             session()->put('user', $user);
             return redirect()->route('userPanel');
         } else {
@@ -30,16 +28,25 @@ class AuthenticationController extends Controller
     }
     
     public function userPanel() {
+        // redirect unexpected guest
+        if (session()->has('user') == null)
+            return redirect()->route('welcome');
+
         // if user exitst in DB go to userPanel
         if (session()->get('user')) 
         {
             return view("userPanel", [
-                'userName' => session()->get('user')->get('email'),
-                'role' => session()->get('user')->get('role'),
-                'department' => session()->get('user')->get('department')
+                'email' => session()->get('user')['email'],
+                'role' => session()->get('user')['role'],
+                'department' => session()->get('user')['department']
             ]);
         } else {
-            return view('welcome');
+            return route('welcome');
         }        
+    }
+
+    public function logout() {
+        session()->flush();
+        return redirect()->route('welcome');
     }
 }

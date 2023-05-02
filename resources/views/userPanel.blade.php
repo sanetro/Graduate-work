@@ -41,7 +41,7 @@
                 <div class="panel-box">
                     <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" class="img-icon-profile">
                     <p>
-                        {{ $userName }}
+                        {{ $email }}
                     </p>
                     <p>
                         {{ $role }}
@@ -52,7 +52,9 @@
                     <button class="custom-button-login">Edit</button>
                     <button class="custom-button-login">Show</button>
                     <button class="custom-button-login">Add</button>
-                    <button class="custom-button-login">Log out</button>
+                    <a href="{{route('logout')}}"><button class="custom-button-login">
+                        Log out
+                    </button></a>
                 </div>  
                 
                 

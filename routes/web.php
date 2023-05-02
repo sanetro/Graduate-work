@@ -19,7 +19,10 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::post('/login', 
-[AuthenticationController::class, 'logUser'])->name('logUser');
+[AuthenticationController::class, 'login'])->name('login');
 
 Route::get('/userpanel', 
 [AuthenticationController::class, 'userPanel'])->name('userPanel');
+
+Route::get('/logout', 
+[AuthenticationController::class, 'logout'])->name('logout');
