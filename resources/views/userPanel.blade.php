@@ -20,9 +20,27 @@
             
                 
             <div class="panel-top">
-                <ul>
-                    <a href="{{route('userPanel')}}"><li>Home</li></a>
-                </ul>
+                <div class="left-nav">
+                    <ol>
+                        <a href="{{route('userPanel')}}"><li>Panel główny</li></a>
+                        <a href="{{route('userPanel')}}"><li>Sylabus</li></a>
+                    </ol>
+                </div>
+                <div class="right-nav">
+                    
+
+                    <a href="{{route('logout')}}">
+                        <button class="custom-button-account" style="width: fit-content">
+                            {{ $email }}
+                        </button>
+                    </a>
+                    <a href="{{route('logout')}}">
+                        <button class="custom-button-account">
+                            Wyloguj
+                        </button>
+                    </a>
+
+                </div>
             </div>
 
             <div class="layout-panel-start">
@@ -31,30 +49,34 @@
 
                     
 
-                    <div class="panel-action">Panel Action</div>
+                    <div class="panel-action">
+                        
+                                
+                                                
+                    </div>
 
-                    <div class="panel-list">Panel List</div>
+                    <div class="panel-list">
+                        <p id="list-of-subjects" class="header-of-container">Lista przedmiotów</p>
+                    </div>
 
                 </div>           
 
 
                 <div class="panel-box">
-                    <img src="https://cdn-icons-png.flaticon.com/512/6596/6596121.png" class="img-icon-profile">
-                    <p>
-                        {{ $email }}
-                    </p>
-                    <p>
-                        {{ $role }}
-                    </p>
-                    <p>
-                        {{ $department }}
-                    </p>
-                    <button class="custom-button-login">Edit</button>
-                    <button class="custom-button-login">Show</button>
-                    <button class="custom-button-login">Add</button>
-                    <a href="{{route('logout')}}"><button class="custom-button-login">
-                        Log out
-                    </button></a>
+                    <p class="header-of-container">Panel Zarządzania</p>
+                        
+                        <ol class="action-list-type">
+                            <li><a href="{{ route('welcome'); }}">Wyświetl moje przedmioty</a></li>                        
+                            <li><a href="{{ route('welcome'); }}">Wszystkie przedmioty</a></li>
+                            <li><a href="{{ route('welcome'); }}">Szukaj przedmiotu lub frazy</a><br></li>
+                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 1</a></li>                        
+                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 2</a></li>
+                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 3</a><br></li>
+                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 4</a></li>                        
+                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 5</a></li>
+                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 6</a><br></li>
+                        </ol>
+                    
                 </div>  
                 
                 

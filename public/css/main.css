@@ -49,7 +49,7 @@ body {
     border-bottom: 2px solid black;
 }
 
-.custom-button-login {
+.custom-button-login, .custom-button-account {
     color:aliceblue;
     background-color: rgba(13, 128, 194, 0.808);
     padding: 10px;
@@ -107,6 +107,7 @@ body {
     margin: 0px;
     width: 100%;
     height: 60px;
+    -align:baseline;
 }
 
 .panel-action {
@@ -114,7 +115,7 @@ body {
 }
 
 .panel-list {
-    height: 600px;
+    min-height: calc(100vh - 300px);
 }
 
 .panel-box, .sub-layout-panel-start {
@@ -123,4 +124,71 @@ body {
 
 .img-icon-profile {
     scale: 0.6;
+}
+
+.action-list-type {
+    list-style-type: 'sad';
+    
+    margin: 20px;
+}
+
+.action-list-type li{
+    
+
+    display: inline-flex;
+    display: flex;
+    padding: 0;
+    /* Bonus: forces no word-wrap */
+    white-space: nowrap;
+    padding: 5px;
+    margin: 2px;
+    margin-top: 10px;
+    border-bottom: 2px dashed rgb(199, 196, 196);
+    
+}
+
+.action-list-type li:hover{
+    border-bottom: 2px solid rgb(77, 175, 231);;
+    color: rgb(13, 128, 194);
+
+    cursor: pointer;
+}
+
+.header-of-container {
+    font-size: larger;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    border-left: 3px solid steelblue;
+    padding-left: 3px;
+    margin-left: 3px;
+}
+
+.right-nav {
+    text-align: right;
+    width: 600px;
+    float: right;
+    height: 100%;
+}
+
+.left-nav {
+    vertical-align: baseline;
+    float: left;
+    height: 100%;
+}
+
+.left-nav ol a li {
+    border-right: 2px solid rgb(214, 213, 213);
+    display: inline;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.custom-button-account {
+    width: 100px;
+    height: 35px;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0; 
+    vertical-align: baseline;  
 }
