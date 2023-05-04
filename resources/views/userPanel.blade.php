@@ -48,7 +48,6 @@
                 <div class="sub-layout-panel-start">
 
                     
-
                     <div class="panel-action">
                         
                                 
@@ -57,6 +56,7 @@
 
                     <div class="panel-list">
                         <p id="list-of-subjects" class="header-of-container">Lista przedmiotów</p>
+                        {{ $subject }}
                     </div>
 
                 </div>           

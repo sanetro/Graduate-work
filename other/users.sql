@@ -1,4 +1,4 @@
-INSERT INTO users (email, password, role, department) VALUES ('sanetro1@urk.edu.pl', 'sanetro1', 1, 1);
-INSERT INTO users (email, password, role, department) VALUES ('council@urk.edu.pl', 'council', 3, 0);
-INSERT INTO users (email, password, role, department) VALUES ('guest@urk.edu.pl', 'guest', 0, 1);
-INSERT INTO users (email, password, role, department) VALUES ('department@urk.edu.pl', 'department', 2, 1);
+INSERT INTO users (email, password, role, department) VALUES ('jan.kowalski@urk.edu.pl', 'sanetro', 'user', 'Science and technology');
+INSERT INTO users (email, password, role, department) VALUES ('council@urk.edu.pl', 'council', 'council', 'Science and technology');
+INSERT INTO users (email, password, role, department) VALUES ('guest@urk.edu.pl', 'guest', 'guest', 'guest is not linked with any department');
+INSERT INTO users (email, password, role, department) VALUES ('department@urk.edu.pl', 'department', 'user', 'Science and technology');
