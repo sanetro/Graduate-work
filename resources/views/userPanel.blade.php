@@ -55,8 +55,46 @@
                     </div>
 
                     <div class="panel-list">
-                        <p id="list-of-subjects" class="header-of-container">Lista przedmiotów</p>
-                        {{ $subject }}
+                        <p id="list-of-subjects-p" class="header-of-container">Lista przedmiotów</p>
+                        
+                        <table class="subject-list-table">
+                            <thead>
+                                <tr>
+                                    <td>Kod przedmiotu</td>
+                                    <td>Nazwa</td>
+                                    <td>Koordynator/rzy</td>
+                                    <td>Rodzaj studiów</td>
+                                    <td>Sepcjalność</td>
+                                    <td>Stopień Studiów</td>
+                                    <td>Semestr</td>
+                                    <td>SZG</td>
+                                    <td>TRP</td>
+                                    <td>EFP</td>
+                                    <td>Sylabus</td>
+                                    <td>Uwagi</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($subject as $s)
+                                    <tr>
+                                        <td>{{ $s->code }}</td>
+                                        <td>{{ $s->name_subject }}</td>
+                                        <td>{{ $s->coordinator }}</td>
+                                        <td>{{ $s->type_study }}</td>
+                                        <td>{{ $s->speciality }}</td>
+                                        <td>{{ $s->bachelor_degree }}</td>
+                                        <td>{{ $s->semester}}</td>
+                                        <td>SZG</td>
+                                        <td>TRP</td>
+                                        <td>EFP</td>
+                                        <td>Sylabus</td>
+                                        <td>Uwagi</td>
+                                    </tr>                                
+                                @empty
+                                    <p>Rekord jest pusty</p>
+                                @endforelse
+                            </tbody> 
+                        </table>
                     </div>
 
                 </div>           

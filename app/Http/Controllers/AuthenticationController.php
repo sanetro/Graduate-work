@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class AuthenticationController extends Controller
@@ -36,13 +37,13 @@ class AuthenticationController extends Controller
         // if user exitst in DB go to userPanel with collection: email, role, department
         if (session()->get('user')) 
         {
-            $subject = Subject::all();
+        //dd(DB::table('subject')->get()); 
 
             return view("userPanel", [
                 'email' => session()->get('user')['email'],
                 'role' => session()->get('user')['role'],
                 'department' => session()->get('user')['department'],
-                'subject' => $subject
+                'subject' => Subject::all() 
             ]);
         } else {
             return route('welcome');
