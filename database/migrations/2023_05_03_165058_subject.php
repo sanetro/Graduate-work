@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subject', function (Blueprint $table) {
+        Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id_subject');
             $table->string('code', 100)->unique();
             $table->string('name_subject', 250);
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->double('lgo_p'); 
             $table->string('subject_status', 100); 
             $table->smallInteger('ects'); 
-            $table->smallInteger('lgo'); 
+            $table->smallInteger('lgo');   
             $table->smallInteger('lgw'); 
             $table->smallInteger('lgs'); 
             $table->smallInteger('lgc'); 
@@ -63,6 +63,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subject');
+        Schema::dropIfExists('subjects');
     }
 };

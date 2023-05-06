@@ -23,13 +23,13 @@ class AuthenticationController extends Controller
         // if user exitst in DB go to userPanel
         if ($user) {
             session()->put('user', $user);
-            return redirect()->route('userPanel');
+            return redirect()->route('panel');
         } else {
             return back()->withInput();
         }        
     }
     
-    public function userPanel() {
+    public function panel() {
         // redirect unexpected guest
         if (session()->has('user') == null)
             return redirect()->route('welcome');
@@ -37,8 +37,6 @@ class AuthenticationController extends Controller
         // if user exitst in DB go to userPanel with collection: email, role, department
         if (session()->get('user')) 
         {
-        //dd(DB::table('subject')->get()); 
-
             return view("userPanel", [
                 'email' => session()->get('user')['email'],
                 'role' => session()->get('user')['role'],

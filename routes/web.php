@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 
@@ -21,8 +22,12 @@ Route::get('/', function () {
 Route::post('/login', 
 [AuthenticationController::class, 'login'])->name('login');
 
-Route::get('/userpanel', 
-[AuthenticationController::class, 'userPanel'])->name('userPanel');
+Route::get('/panel', 
+[AuthenticationController::class, 'panel'])->name('panel');
 
 Route::get('/logout', 
 [AuthenticationController::class, 'logout'])->name('logout');
+
+
+Route::get('/panel/account', 
+[AccountController::class, 'account'])->name('account');

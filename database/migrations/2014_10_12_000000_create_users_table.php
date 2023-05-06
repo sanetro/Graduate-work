@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role'); // user, guest, council - moderator, headmaster
-            $table->string('department'); // name of department where is working profesor / teacher
+            $table->integer('id_teacher')->nullable(); 
         });
     }
 
