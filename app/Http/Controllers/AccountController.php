@@ -13,8 +13,16 @@ class AccountController extends Controller
         if (session()->has('user') == null)
             return redirect()->route('welcome');
         
-        $info = Teacher::all();
-        return $info;
+        $teacher = Teacher::all()
+            ->where('id', session()->get('user')['id'])
+            ->first();
+        
+        if($teacher != null) {
+            return view('account-information', [ 
+            'account' => $teacher,
+            'email' => session()->get('user')['email']]);
+        }
+        return redirect()->route("panel");
     }
 }   
 

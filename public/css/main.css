@@ -85,7 +85,7 @@ body {
     box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.212);
 }
 
-.panel-box, .panel-top, .panel-action, .panel-list{
+.panel-box, .panel-top, .panel-action, .panel-list, .account-box{
     text-align: left;
     margin: 20px;
     padding: 10px;
@@ -94,7 +94,7 @@ body {
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.212);
 }
 
-.panel-box {
+.panel-box, .account-box{
     width: 20%;
     height: 820px;
     margin-left: 0px;
@@ -115,7 +115,7 @@ body {
 }
 
 .panel-list {
-    min-height: calc(100vh - 300px);
+    min-height: 89vh;
 }
 
 .panel-box, .sub-layout-panel-start {
@@ -206,6 +206,26 @@ body {
 .link-open-in-new-page {
     width: 25px;
     height: 25px;
-    
+}
 
+.account-box {
+    margin: 20px auto !important;
+    width: 50%;
+}
+
+.account-data-table {
+    text-align: left;
+    width: 65%;
+    margin: 20px;
+    height: 400px;
+    margin: 30px auto;
+}
+.account-data-table tr td {
+    padding: 10px;
+    border-bottom: 4px dotted gainsboro;
+}
+.account-data-table tr td:nth-child(2) {
+    padding: 10px;
+    border-left: 2px solid gainsboro;
+    text-align: center;
 }

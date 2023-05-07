@@ -44,42 +44,35 @@
             </div>
 
             <div class="layout-panel-start">
-
-                <div class="sub-layout-panel-start">
-
-                    
-                    <div class="panel-action">
-                        
-                                
-                                                
-                    </div>
-
-                    <div class="panel-list">
-                        <p id="list-of-subjects-p" class="header-of-container">Moja lista przedmiotów</p>
-                        
-                        
-                    </div>
-
-                </div>           
-
-
-                <div class="panel-box">
-                    <p class="header-of-container">Panel Zarządzania</p>
-                        <ol class="action-list-type">
-                            <li><a href="{{ route('welcome'); }}">Wyświetl moje przedmioty</a></li>                        
-                            <li><a href="{{ route('welcome'); }}">Wszystkie przedmioty</a></li>
-                            <li><a href="{{ route('welcome'); }}">Szukaj przedmiotu lub frazy</a><br></li>
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 1</a></li>                        
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 2</a></li>
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 3</a><br></li>
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 4</a></li>                        
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 5</a></li>
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 6</a><br></li>
-                        </ol>
-                    
+                <div class="account-box" style="margin 20px auto !important">
+                    <p class="header-of-container">Informacje o końcie</p>
+                    <table class="account-data-table">
+                        <tr>
+                            <td> identyfikator </td>
+                            <td> {{ $account->id }} </td>
+                        </tr>
+                        <tr>
+                            <td> Imie </td>
+                            <td> {{ $account->name }} </td>
+                        </tr>
+                        <tr>
+                            <td> Nazwisko </td>
+                            <td> {{ $account->surname }} </td>
+                        </tr>
+                        <tr>
+                            <td> Katedra </td>
+                            <td> {{ $account->chair }} </td>
+                        </tr>
+                        <tr>
+                            <td> Wydział </td>
+                            <td> {{ $account->department }} </td>
+                        </tr>
+                        <tr>
+                            <td> Uniwersytet </td>
+                            <td> {{ $account->university }} </td>
+                        </tr>
+                    </table>
                 </div>  
-                
-                
             </div>
         
     </body>

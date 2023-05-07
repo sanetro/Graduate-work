@@ -45,14 +45,25 @@
 
             <div class="layout-panel-start">
 
+                <div class="panel-box">
+                    <p class="header-of-container">Panel Zarządzania</p>
+                    <ol class="action-list-type">
+                        <li><a href="{{ route('welcome'); }}">Wyświetl moje przedmioty</a></li>                        
+                        <li><a href="{{ route('welcome'); }}">Wszystkie przedmioty</a></li>
+                        <li><a href="{{ route('welcome'); }}">Szukaj przedmiotu lub frazy</a><br></li>
+                        <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 1</a></li>                        
+                        <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 2</a></li>
+                        <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 3</a><br></li>
+                        <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 4</a></li>                        
+                        <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 5</a></li>
+                        <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 6</a><br></li>
+                    </ol>                    
+                </div>
+                
                 <div class="sub-layout-panel-start">
 
                     
-                    <div class="panel-action">
-                        
-                                
-                                                
-                    </div>
+                    <!-- <div class="panel-action"></div> --> 
 
                     <div class="panel-list">
                         <p id="list-of-subjects-p" class="header-of-container">Moja lista przedmiotów</p>
@@ -100,21 +111,7 @@
                 </div>           
 
 
-                <div class="panel-box">
-                    <p class="header-of-container">Panel Zarządzania</p>
-                        <ol class="action-list-type">
-                            <li><a href="{{ route('welcome'); }}">Wyświetl moje przedmioty</a></li>                        
-                            <li><a href="{{ route('welcome'); }}">Wszystkie przedmioty</a></li>
-                            <li><a href="{{ route('welcome'); }}">Szukaj przedmiotu lub frazy</a><br></li>
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 1</a></li>                        
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 2</a></li>
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 3</a><br></li>
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 4</a></li>                        
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 5</a></li>
-                            <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 6</a><br></li>
-                        </ol>
-                    
-                </div>  
+                  
                 
                 
             </div>
