@@ -44,8 +44,9 @@ body {
 }
 
 .custom-input {
-    margin: 15px;
+    margin: 5px;
     width: 100%;
+    padding: 10px;;
     border-bottom: 2px solid black;
 }
 
@@ -107,7 +108,7 @@ body {
     margin: 0px;
     width: 100%;
     height: 60px;
-    -align:baseline;
+    
 }
 
 .panel-action {
@@ -116,6 +117,10 @@ body {
 
 .panel-list {
     min-height: 89vh;
+}
+
+.panel-box {
+    margin-left: 19px;
 }
 
 .panel-box, .sub-layout-panel-start {
@@ -201,6 +206,10 @@ body {
 .subject-list-table thead tr td, .subject-list-table tbody tr td {
     padding: 5px;
     border: 1px solid rgb(161, 161, 161);
+}
+
+.subject-list-table thead {
+    background-color:lightskyblue;
 }
 
 .link-open-in-new-page {

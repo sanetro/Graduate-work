@@ -8,14 +8,12 @@ use App\Models\Teacher;
 
 class AccountController extends Controller
 {
-    public function account() {
+    public function show() {
         // redirect unexpected guest
         if (session()->has('user') == null)
             return redirect()->route('welcome');
         
-        $teacher = Teacher::all()
-            ->where('id', session()->get('user')['id'])
-            ->first();
+        $teacher = Teacher::find(session()->get('user')['id']);
         
         if($teacher != null) {
             return view('account-information', [ 

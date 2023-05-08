@@ -29,7 +29,7 @@
                 <div class="right-nav">
                     
 
-                    <a href="{{route('logout')}}">
+                    <a href="{{route('account')}}">
                         <button class="custom-button-account" style="width: fit-content">
                             {{ $email }}
                         </button>
@@ -45,7 +45,7 @@
 
             <div class="layout-panel-start">
                 <div class="account-box" style="margin 20px auto !important">
-                    <p class="header-of-container">Informacje o końcie</p>
+                    <p class="header-of-container">Informacje konta</p>
                     <table class="account-data-table">
                         <tr>
                             <td> identyfikator </td>

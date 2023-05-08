@@ -30,4 +30,4 @@ Route::get('/logout',
 
 
 Route::get('/panel/account', 
-[AccountController::class, 'account'])->name('account');
+[AccountController::class, 'show'])->name('account');

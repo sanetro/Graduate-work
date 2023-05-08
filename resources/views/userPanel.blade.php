@@ -51,7 +51,7 @@
                         <li><a href="{{ route('welcome'); }}">Wyświetl moje przedmioty</a></li>                        
                         <li><a href="{{ route('welcome'); }}">Wszystkie przedmioty</a></li>
                         <li><a href="{{ route('welcome'); }}">Szukaj przedmiotu lub frazy</a><br></li>
-                        <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 1</a></li>                        
+                        <li><a href="{{ route('welcome'); }}">Pomoc oznaczeń</a></li>                        
                         <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 2</a></li>
                         <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 3</a><br></li>
                         <li><a href="{{ route('welcome'); }}">Opcja zarządzająca 4</a></li>                        

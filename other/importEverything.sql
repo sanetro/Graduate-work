@@ -3,6 +3,7 @@ INSERT INTO users (email, password, role, id_teacher) VALUES ('council@qwerty.ed
 INSERT INTO users (email, password, role, id_teacher) VALUES ('guest@qwerty.edu.pl', 'guest', 'guest', 3);
 INSERT INTO users (email, password, role, id_teacher) VALUES ('department@qwerty.edu.pl', 'department', 'user', 2);
 INSERT INTO users (email, password, role, id_teacher) VALUES ('jan.kowalski@qwerty.edu.pl', 'Kowalski', 'user', 1);
+INSERT INTO users (email, password, role, id_teacher) VALUES ('bartek.santiego@qwerty.edu.pl', 'santiego', 'user', 5);
 
 # Teachers
 INSERT INTO teachers (name, surname, titles, chair, department, university) 
@@ -13,6 +14,9 @@ INSERT INTO teachers (name, surname, titles, chair, department, university)
 VALUES ('Anna', 'Annowna', 'dr inż.', 'Medycyna współczesna', 'Medycyna', 'Uniwersytet Nieznanego Miasta Zwykły');
 INSERT INTO teachers (name, surname, titles, chair, department, university) 
 VALUES ('Katarzyna', 'Katarzyńska', 'dr hab. ', 'Medycyna współczesna', 'Medycyna', 'Uniwersytet Nieznanego Miasta Zwykły');
+INSERT INTO teachers (name, surname, titles, chair, department, university) 
+VALUES ('Bartek', 'Santiego', 'inż. ', 'Informatyka stosowana', 'Technologie Komputerowe', 'Uniwersytet Nieznanego Miasta Zwykły');
+
 
 # Subjects
 INSERT INTO subjects (code, name_subject, coordinator, teacher, type_study, speciality, bachelor_degree, semester, department, chair, required, lgo_p, subject_status, ects, lgo, lgw, lgs, lgc, type_of_exercice, pfpz, f_zal, e_lgwyk, e_pw, ects_sg, ects_tl, ects_ts, lg_wyk, lg_k, lg_uwb, lg_ops, lg_uez, lg_online, lg_pw, pr_st, wy_wst, j_wyk, sp_ww, sp_wc, sp_ws, lit_podst, lit_uzup, kdpp) 
