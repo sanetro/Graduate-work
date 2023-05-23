@@ -36,5 +36,8 @@ INSERT INTO roles (role_name) VALUES ("test role 2");
 INSERT INTO roles (role_name) VALUES ("test role 3");
 
 INSERT INTO teachers (name, surname, titles) VALUES ('Jan', 'Kowalski', 'prof.');
+INSERT INTO teachers (name, surname, titles) VALUES ('NieJan', 'JanKowalski', 'Nie prof.');
+
 
 INSERT INTO users (email, password, role_id, teacher_id) VALUES ('test@qwerty.edu.pl', 'test', 1, 1);
+INSERT INTO users (email, password, role_id, teacher_id) VALUES ('nietest@qwerty.edu.pl', 'nietest', 1, 2);

@@ -6,25 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-
-class Teacher extends Model
+class Role extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id',
-        'name',
-        'surname',
-        'titles',
-    ];
 
-    protected $hidden = [
-        'id',
-    ];
-
-    public function idetifyTeacher() : MorphTo
+    public function idetifyRole() : MorphTo
     {
         return $this->morphTo();
     }
-
 }

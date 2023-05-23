@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class User extends Authenticatable
 {
@@ -33,10 +34,14 @@ class User extends Authenticatable
         'password'
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    public function getTeacherInfo() : MorphMany
+    {
+        return $this->morphMany(Teacher::class, 'idetifyTeacher');    
+    }
+
+    public function getRoleInfo() : MorphMany
+    {
+        return $this->morphMany(Role::class, 'idetifyRole');    
+    }
     
 }

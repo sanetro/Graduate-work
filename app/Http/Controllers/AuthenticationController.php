@@ -10,23 +10,29 @@ use Illuminate\Support\Facades\DB;
 
 class AuthenticationController extends Controller
     {
-    public function login(Request $r) {        
-        // Request is data object and has login, passwd, database name from form
-        $email = $r->input('userName');
-        $passwd = $r->input('passwd');
-        $database = $r->input('databaseName');
-        $user = User::all()
-            ->where('email', '==', $email)
-            ->where('password', '==', $passwd)
-            ->first();
+    public function login(Request $r) {
+        $tmp = User::all();
+        foreach ($tmp as $r) {
+            echo $r."<br>";
+        }
+
         
-        // if user exitst in DB go to userPanel
-        if ($user) {
-            session()->put('user', $user);
-            return redirect()->route('panel');
-        } else {
-            return back()->withInput();
-        }        
+        // // Request is data object and has login, passwd, database name from form
+        // $email = $r->input('userName');
+        // $passwd = $r->input('passwd');
+        // $database = $r->input('databaseName');
+        // $user = User::all()
+        //     ->where('email', '==', $email)
+        //     ->where('password', '==', $passwd)
+        //     ->first();
+        
+        // // if user exitst in DB go to userPanel
+        // if ($user) {
+        //     session()->put('user', $user);
+        //     return redirect()->route('panel');
+        // } else {
+        //     return back()->withInput();
+        // }        
     }
     
     public function panel() {
