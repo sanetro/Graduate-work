@@ -15,8 +15,11 @@ return new class extends Migration
             $table->increments('id');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role'); // user, guest, council - moderator, headmaster
-            $table->integer('id_teacher')->nullable(); 
+            $table->unsignedBigInteger('role_id')->foreignId('role_id')->references('id')->on('roles');
+            $table->unsignedBigInteger('teacher_id')->foreignId('teachers_id')->references('id')->on('teachers');
+
+
+             
         });
     }
 

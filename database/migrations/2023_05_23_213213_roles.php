@@ -6,14 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
-    {        
-        Schema::create('teachers', function (Blueprint $table) {
+    {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('surname');
-            $table->string('titles'); 
-            // $table->timestamps('date');  future
+            $table->string('role_name')->unique();
         });
     }
 
@@ -22,7 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teachers');
-
+        Schema::dropIfExists('roles');
     }
 };
