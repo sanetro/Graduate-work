@@ -5,17 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Subject;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;  
 
 
 class AuthenticationController extends Controller
     {
     public function login(Request $r) {
-        $tmp = User::all();
-        foreach ($tmp as $r) {
-            echo $r."<br>";
+        $tmp = User::with('teacher')->get();
+        foreach($tmp as $t) {
+            echo $t->teacher."<br>";
         }
-
         
         // // Request is data object and has login, passwd, database name from form
         // $email = $r->input('userName');
