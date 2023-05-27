@@ -45,7 +45,7 @@ class User extends Authenticatable
         return $this->morphMany(Role::class, 'idetifyRole');    
     }
 
-    public function teacher() : BelongsTo 
+    public function belongSToTeacher() : BelongsTo 
     {
         return $this->belongsTo(Teacher::class);
     }
