@@ -10,6 +10,9 @@ class Role extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'role_name'
+    ];
 
     public function idetifyRole() : MorphTo
     {

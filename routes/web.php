@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\ActionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,7 @@ Route::get('/logout',
 
 
 Route::get('/panel/account', 
-[AccountController::class, 'show'])->name('account');
+[AccountController::class, 'showAccount'])->name('account');
+
+Route::get('/panel/my-subjects', 
+[ActionController::class, 'showMySubjects'])->name('my-subjects');

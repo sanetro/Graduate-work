@@ -8,13 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('form_of_assessments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('role_name')->unique();
+            $table->string('name', 50); 
         });
     }
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('form_of_assessments');
+        
     }
 };

@@ -21,10 +21,21 @@
                 
             <div class="panel-top">
                 <div class="left-nav">
-                    <ol>
-                        <a href="{{route('panel')}}"><li>Panel główny</li></a>
-                        <a href="{{route('panel')}}"><li>Macierz efektów kształcenia</li></a>
-                    </ol>
+                    <a href="{{route('panel')}}">
+                        <button class="custom-button-account" style="width: fit-content">
+                            Panel główny
+                        </button>
+                    </a>
+                    <a href="{{route('panel')}}" >
+                        <button class="custom-button-account" class="custom-button-action" style="width: 250px; background: white; color: black;" >
+                            Macierz efektów kształcenia
+                        </button>
+                    </a>
+                    <a href="{{route('panel')}}" >
+                        <button class="custom-button-account" class="custom-button-action" style="width: 250px; background: white; color: black;" >
+                           Wszystkie przedmioty
+                        </button>
+                    </a>
                 </div>
                 <div class="right-nav">
                     
@@ -46,7 +57,6 @@
             <div class="layout-panel-start">
 
                 <div class="panel-box">
-                    <p class="header-of-container">Panel Zarządzania</p>
                     <ol class="action-list-type">
                         <li><a href="{{ route('welcome'); }}">Wyświetl moje przedmioty</a></li>                        
                         <li><a href="{{ route('welcome'); }}">Wszystkie przedmioty</a></li>
@@ -86,15 +96,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($subject as $s)
+                                @forelse ($sylabus as $s)
                                     <tr>
-                                        <td>{{ $s->code }}</td>
+                                        <td>{{ $s->code_subject }}</td>
                                         <td>{{ $s->name_subject }}</td>
-                                        <td>{{ $s->coordinator }}</td>
                                         <td>{{ $s->type_study }}</td>
                                         <td>{{ $s->speciality }}</td>
-                                        <td>{{ $s->bachelor_degree }}</td>
-                                        <td>{{ $s->semester}}</td>
+                                        <td>{{ $s->degree }}</td>
+                                        <td>{{ $s->semester }}</td>
+                                        <td>{{ $s->chair_id }}</td>
+
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>

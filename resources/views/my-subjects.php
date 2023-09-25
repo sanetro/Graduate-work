@@ -50,8 +50,8 @@
             </div>
 
             <div class="layout-panel-start">
-                <div class="account-box" style="margin 20px auto !important">
-                    <p class="header-of-container">Informacje o koncie</p>
+                <div class="account-box" style="margin: 20px auto !important">
+                    <p class="header-of-container">Informacje konta</p>
                     <table class="account-data-table">
                         <tr>
                             <td> identyfikator </td>
@@ -66,16 +66,16 @@
                             <td> {{ $account->surname }} </td>
                         </tr>
                         <tr>
-                            <td> Stanowisko </td>
-                            <td> {{ $role }} </td>
-                        </tr>
-                        <tr>
                             <td> Katedra </td>
-                            <td> {{ $chair }} </td>
+                            <td> {{ $account->role }} </td>
                         </tr>
                         <tr>
                             <td> Wydział </td>
-                            <td> {{ $department }} </td>
+                            <td> {{ $account->department }} </td>
+                        </tr>
+                        <tr>
+                            <td> Uniwersytet </td>
+                            <td> {{ $account->university }} </td>
                         </tr>
                     </table>
                 </div>  

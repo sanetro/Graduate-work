@@ -1,0 +1,18 @@
+@forelse ($subject as $s)
+                                    <tr>
+                                        <td>{{ $s->code }}</td>
+                                        <td>{{ $s->name_subject }}</td>
+                                        <td>{{ $s->coordinator }}</td>
+                                        <td>{{ $s->type_study }}</td>
+                                        <td>{{ $s->speciality }}</td>
+                                        <td>{{ $s->bachelor_degree }}</td>
+                                        <td>{{ $s->semester}}</td>
+                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
+                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
+                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
+                                        <td>Sylabus</td>
+                                        <td>Uwagi</td>
+                                    </tr>                                
+                                @empty
+                                    <p>Rekord jest pusty</p>
+                                @endforelse

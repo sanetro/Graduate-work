@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Subject;
+use App\Models\Sylabus_initialized;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;  
 
 
 class AuthenticationController extends Controller
@@ -41,7 +40,7 @@ class AuthenticationController extends Controller
                 'email' => session()->get('user')['email'],
                 'role' => session()->get('user')['role'],
                 'department' => session()->get('user')['department'],
-                'subject' => Subject::all() 
+                'sylabus' => Sylabus_initialized::all()
             ]);
         } else {
             return route('welcome');

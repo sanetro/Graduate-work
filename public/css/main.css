@@ -52,9 +52,8 @@ body {
 
 .custom-button-login, .custom-button-account {
     color:aliceblue;
-    background-color: rgba(13, 128, 194, 0.808);
+    background-color: #4f6fe8;
     padding: 10px;
-    width: 150px;
     border-radius: 4px;
     margin: 15px;
 }
@@ -62,6 +61,11 @@ body {
 .custom-button-login:hover {
     background-color: rgb(13, 128, 194);
     cursor: pointer;
+}
+
+.custom-button-action:hover {
+    color: #4964ff;
+
 }
 
 .layout-panel-start {
@@ -91,8 +95,9 @@ body {
     margin: 20px;
     padding: 10px;
     border-radius: 4px;
-    background-color: white;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.212);
+    background-color: white;
+
 }
 
 .panel-box, .account-box{
@@ -108,19 +113,22 @@ body {
     margin: 0px;
     width: 100%;
     height: 60px;
-    
 }
 
 .panel-action {
     height: 200px;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.212);
 }
 
 .panel-list {
     min-height: 89vh;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.212);
+    background-color: #e8eaf1;
 }
 
 .panel-box {
     margin-left: 19px;
+    
 }
 
 .panel-box, .sub-layout-panel-start {
@@ -138,8 +146,6 @@ body {
 }
 
 .action-list-type li{
-    
-
     display: inline-flex;
     display: flex;
     padding: 0;
@@ -149,9 +155,7 @@ body {
     margin: 2px;
     margin-top: 10px;
     border-bottom: 2px dashed rgb(199, 196, 196);
-    
 }
-
 .action-list-type li:hover{
     border-bottom: 2px solid rgb(77, 175, 231);;
     color: rgb(13, 128, 194);
@@ -163,7 +167,6 @@ body {
     font-size: larger;
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
-    border-left: 3px solid steelblue;
     padding-left: 3px;
     margin-left: 3px;
 }
@@ -176,9 +179,9 @@ body {
 }
 
 .left-nav {
-    vertical-align: baseline;
     float: left;
     height: 100%;
+    width: 50%;
 }
 
 .left-nav ol a li {
@@ -205,11 +208,23 @@ body {
 
 .subject-list-table thead tr td, .subject-list-table tbody tr td {
     padding: 5px;
-    border: 1px solid rgb(161, 161, 161);
+    margin: 1px;
+    border-bottom: 1px solid rgb(161, 161, 161);
+}
+.subject-list-table tbody tr td:hover {
+    padding: 5px;
+    border-bottom: 1px solid #4964ff;
+    margin: 1px;
+}
+.subject-list-table tbody tr:hover {
+    padding: 5px;
+    margin: 1px;
+    background-color: #f8f8f8;
 }
 
 .subject-list-table thead {
-    background-color:lightskyblue;
+    background-color: #4f6fe8;
+    color: whitesmoke;
 }
 
 .link-open-in-new-page {
@@ -218,23 +233,20 @@ body {
 }
 
 .account-box {
+    width: 40%;
     margin: 20px auto !important;
-    width: 50%;
 }
 
 .account-data-table {
+    width: 80%;
     text-align: left;
-    width: 65%;
-    margin: 20px;
-    height: 400px;
-    margin: 30px auto;
+    margin: 20px auto !important;
 }
 .account-data-table tr td {
     padding: 10px;
-    border-bottom: 4px dotted gainsboro;
+    border-bottom: 1px solid gainsboro;
 }
 .account-data-table tr td:nth-child(2) {
     padding: 10px;
-    border-left: 2px solid gainsboro;
     text-align: center;
 }

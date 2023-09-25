@@ -8,15 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('subject_effects_to_directional_effects', function (Blueprint $table) {
+        Schema::create('sylabus_supl_to_subject_effects', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedBigInteger('sylabus_id')->foreignId('sylabus_id')->references('id')->on('sylabus_suplementary');
             $table->unsignedBigInteger('subject_effects_id')->foreignId('subject_effects_id')->references('id')->on('subject_effects');
-            $table->unsignedBigInteger('directional_effects_id')->foreignId('directional_effects_id')->references('id')->on('directional_effects');
         });
     }
+
     public function down(): void
     {
-        Schema::dropIfExists('subject_effects_to_directional_effects');
+        Schema::dropIfExists('sylabus_supl_to_subject_effects');
     }
-
 };

@@ -2,23 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
+
+use App\Models\User;
 
 // use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    public function show() {
+    public function showAccount() {
         // redirect unexpected guest
         if (session()->has('user') == null)
             return redirect()->route('welcome');
         
-        $teacher = Teacher::find(session()->get('user')['id']);
-        
-        if($teacher != null) {
+        $thisUser = User::find(session()->get('user')['id']);
+        $role = $thisUser->roles->role_name;
+        $chair = $thisUser->chairs->name;
+        $department = $thisUser->chairs->departments->name;
+        // dd($chair);
+        if($thisUser != null) {
             return view('account-information', [ 
-            'account' => $teacher,
-            'email' => session()->get('user')['email']]);
+            'account' => $thisUser,
+            'email' => session()->get('user')['email'],
+            'role' => $role,
+            'chair' => $chair,
+            'department' => $department
+            ]
+        );
         }
         return redirect()->route("panel");
     }

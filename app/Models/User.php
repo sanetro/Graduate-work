@@ -23,6 +23,11 @@ class User extends Authenticatable
         'id',
         'email',
         'password',
+        'role_id',
+        'name',
+        'surname',
+        'titles',
+        'chair_id'
     ];
 
     /**
@@ -35,19 +40,18 @@ class User extends Authenticatable
         'password'
     ];
 
-    public function getTeacherInfo() : MorphMany
+    
+
+    public function roles() : BelongsTo
     {
-        return $this->morphMany(Teacher::class, 'idetifyTeacher');    
+        return $this->belongsTo(Role::class, 'role_id', 'id');    
     }
 
-    public function getRoleInfo() : MorphMany
+    public function chairs() : BelongsTo
     {
-        return $this->morphMany(Role::class, 'idetifyRole');    
+        return $this->belongsTo(Chair::class, 'chair_id', 'id');    
     }
 
-    public function belongSToTeacher() : BelongsTo 
-    {
-        return $this->belongsTo(Teacher::class);
-    }
+    
     
 }

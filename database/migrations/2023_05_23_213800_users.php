@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -16,13 +13,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->unsignedBigInteger('role_id')->foreignId('role_id')->references('id')->on('roles');
-            $table->unsignedBigInteger('teacher_id')->foreignId('teachers_id')->references('id')->on('teachers');
+            $table->string('name');
+            $table->string('surname');
+            $table->string('titles');
+            $table->unsignedBigInteger('chair_id')->foreignId('chair_id')->references('id')->on('chairs');
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('users');
