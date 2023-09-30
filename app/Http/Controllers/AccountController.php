@@ -18,7 +18,7 @@ class AccountController extends Controller
         $role = $thisUser->roles->role_name;
         $chair = $thisUser->chairs->name;
         $department = $thisUser->chairs->departments->name;
-        // dd($chair);
+        
         if($thisUser != null) {
             return view('account-information', [ 
             'account' => $thisUser,

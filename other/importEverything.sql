@@ -104,3 +104,5 @@ VALUES
     ('In-person classes', 'Continuous assessment', 0.4, 0.2, 0.4, 'Prerequisite course X', 'Spanish', 'Textbook 1, Textbook 2', 'Supplementary Guide Z', 'Experienced in the field', 2, 3),
     ('Hybrid (online and in-person)', 'Final project', 0.6, 0.4, 0.3, 'Prerequisite course Y', 'French', 'Manual A, Manual B', 'Additional Notes', 'PhD holder', 3, 1),
     ('Online lectures', 'Final exam', 0.5, 0.3, 0.2, 'None', 'English', 'Book A, Book B', 'Additional Book X, Additional Book Y', 'Highly qualified', 1, 2);
+
+INSERT INTO user_to_sylabus (sylabus_id, user_id) VALUES (1, 1), (1, 2), (1, 3), (2, 4);  

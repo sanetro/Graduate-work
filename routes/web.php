@@ -29,9 +29,11 @@ Route::get('/panel',
 Route::get('/logout', 
 [AuthenticationController::class, 'logout'])->name('logout');
 
-
 Route::get('/panel/account', 
 [AccountController::class, 'showAccount'])->name('account');
 
-Route::get('/panel/my-subjects', 
-[ActionController::class, 'showMySubjects'])->name('my-subjects');
+Route::get('/panel/my-sylabuses', 
+[ActionController::class, 'showMySylabuses'])->name('my-sylabuses');
+
+Route::match(['get', 'post'], '/panel/find-sylabuses', 
+[ActionController::class, 'showFoundSylabuses'])->name('find-sylabuses');

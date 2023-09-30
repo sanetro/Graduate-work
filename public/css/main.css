@@ -157,9 +157,8 @@ body {
     border-bottom: 2px dashed rgb(199, 196, 196);
 }
 .action-list-type li:hover{
-    border-bottom: 2px solid rgb(77, 175, 231);;
-    color: rgb(13, 128, 194);
-
+    border-bottom: 2px solid #4964ff;
+    color: #4964ff;
     cursor: pointer;
 }
 
@@ -249,4 +248,24 @@ body {
 .account-data-table tr td:nth-child(2) {
     padding: 10px;
     text-align: center;
+}
+
+.selected-list {
+    color: #4964ff;
+    border-bottom: 1px solid #4964ff;
+}
+
+.order-radio-box {
+    margin: 10px;
+}
+.searching-form {
+    margin: 50px;
+}
+.hidden-content {
+    display: block;
+    transition: opacity 0.3s ease, height 0.3s ease;
+}
+.hidden-content {
+    display: none;
+    transition: opacity 0.3s ease, height 0.3s ease;
 }

@@ -57,9 +57,9 @@
             <div class="layout-panel-start">
 
                 <div class="panel-box">
-                    <ol class="action-list-type">  
-                        <a href="{{ route('panel'); }}"><li class="selected-list">Wszystkie przedmioty</li></a>
-                        <a href="{{ route('my-sylabuses'); }}"><li>Wyświetl moje przedmioty</li></a>
+                    <ol class="action-list-type">
+                        <a href="{{ route('panel'); }}"><li>Wszystkie przedmioty</li></a>
+                        <a href="{{ route('my-sylabuses'); }}"><li class="selected-list">Wyświetl moje przedmioty</li></a>
                         <a href="{{ route('welcome'); }}"><li>Szukaj przedmiotu lub frazy</li></a>
                         <a href="{{ route('welcome'); }}"><li>Pomoc oznaczeń</li></a>     
                         <a href="{{ route('welcome'); }}"><li>Opcja zarządzająca 2</li></a>
@@ -76,7 +76,7 @@
                     <!-- <div class="panel-action"></div> --> 
 
                     <div class="panel-list">
-                        <p id="list-of-subjects-p" class="header-of-container">Lista wszystkich przedmiotów</p>
+                        <p id="list-of-subjects-p" class="header-of-container">Moja lista przedmiotów</p>
                         
                         <table class="subject-list-table">
                             <thead>
@@ -96,7 +96,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($sylabus as $s)
+                                @forelse ($userSylabuses as $s)
                                     <tr>
                                         <td>{{ $s->code_subject }}</td>
                                         <td>{{ $s->name_subject }}</td>
