@@ -79,14 +79,104 @@
                         <p id="list-of-subjects-p" class="header-of-container">
                             Szukaj przedmiotu lub frazy
                         </p>
-                        <form action="{{ route('searchSylabuses') }}" method="POST" class="searching-form">
+                        <form action="{{ route('find-sylabuses') }}" method="POST" class="searching-form">
                             @csrf
-                            <input type="text" id="searchWord" name="searchName" placeholder="{{ $lastSearchedWord ? $lastSearchedWord : 'Szukaj ...' }}" class="input-search-words" autocomplete="off">
-                            <button type="submit" class="custom-button-account">Szukaj</button>
-
+                            <input type="text" id="searchWord" placeholder=" Szukaj ... " class="input-search-words">
+                    
+                            <p>Wybierz opcję wyszukiwania:</p>
+                    
+                            <div class="order-radio-box">
+                                <input type="radio" id="option1" name="searchOption" value="dsadadasdasdasdasd" checked>
+                                <label for="option1">Szukaj po wszystkich kolumnach</label>
+                                <div id="container1" class="hidden-content">
+                                    <button type="submit" class="custom-button-account">Szukaj</button>
+                                </div>
+                            </div>
+                    
+                            <div class="order-radio-box">
+                                <input type="radio" id="option2" name="searchOption" value="single">
+                                <label for="option2">Szukaj po wybranej kolumnie:</label>
+                    
+                                <div id="container2" class="hidden-content">
+                                    <select id="selectedColumn" name="selectedColumn" onchange="unlockContent()">
+                                        <option value="code_subject">Kod przedmiotu</option>
+                                        <option value="name_subject">Nazwa przedmiotu</option>
+                                        <option value="coordinators">Koordynatorzy</option>
+                                        <option value="type_study">Typ studiów</option>
+                                        <option value="specialization">Specjalizacja</option>
+                                        <option value="degree">Stopień studiów</option>
+                                        <option value="semester">Semester</option>
+                                        <!-- Dodaj więcej opcji dla innych kolumn -->
+                                    </select>
+                                    <button type="submit" class="custom-button-account">Szukaj</button>
+                                </div>
+                            </div>
+                    
+                            <div class="order-radio-box">
+                                <input type="radio" id="option3" name="searchOption" value="range">
+                                <label for="option3">Szukaj po wybranej kolumnie w danym przedziale:</label>
+                                <div id="container3" class="hidden-content">
+                    
+                                    <select id="selectedRangeColumn" name="selectedRangeColumn">
+                                        <option value="kod_przedmiotu">Kod przedmiotu</option>
+                                        <option value="nazwa_przedmiotu">Nazwa przedmiotu</option>
+                                        <option value="typ_studiow">Typ studiów</option>
+                                        <!-- Dodaj więcej opcji dla innych kolumn -->
+                                    </select>
+                                    <input type="text" id="rangeStart" name="rangeStart" placeholder="Początek" disabled>
+                                    <input type="text" id="rangeEnd" name="rangeEnd" placeholder="Koniec" disabled>
+                                </div>
+                            </div>
                         </form>
                     
-                        
+                        <script>
+                            let option1 = document.getElementById('option1');
+                            let container1 = document.getElementById('container1');
+                    
+                            let option2 = document.getElementById('option2');
+                            let container2 = document.getElementById('container2');
+                    
+                            let option3 = document.getElementById('option3');
+                            let container3 = document.getElementById('container3');
+                    
+                            option1.addEventListener('change', function () {
+                                if (this.checked) {
+                                    container1.style.display = "block";
+                                    container2.style.display = "none";
+                                    container3.style.display = "none";
+                                }
+                            });
+                    
+                            option2.addEventListener('change', function () {
+                                if (this.checked) {
+                                    container1.style.display = "none";
+                                    container2.style.display = "block";
+                                    container3.style.display = "none";
+                                }
+                            });
+                    
+                            option3.addEventListener('change', function () {
+                                if (this.checked) {
+                                    container1.style.display = "none";
+                                    container2.style.display = "none";
+                                    container3.style.display = "block";
+                                }
+                            });
+                    
+                            function unlockContent() {
+                                const selectedColumn = document.getElementById('selectedColumn');
+                                const rangeStart = document.getElementById('rangeStart');
+                                const rangeEnd = document.getElementById('rangeEnd');
+                    
+                                if (selectedColumn.value === 'semester') {
+                                    rangeStart.disabled = false;
+                                    rangeEnd.disabled = false;
+                                } else {
+                                    rangeStart.disabled = true;
+                                    rangeEnd.disabled = true;
+                                }
+                            }
+                        </script>
                     </div>
                     
                         
@@ -126,7 +216,7 @@
                                         <td>Uwagi</td>
                                     </tr>                                
                                 @empty
-                                    <div class="alert">Rekord jest pusty</div>
+                                    <p>Rekord jest pusty</p>
                                 @endforelse
                             </tbody> 
                         </table>

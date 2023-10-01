@@ -60,7 +60,7 @@
                     <ol class="action-list-type">  
                         <a href="{{ route('panel'); }}"><li class="selected-list">Wszystkie przedmioty</li></a>
                         <a href="{{ route('my-sylabuses'); }}"><li>Wyświetl moje przedmioty</li></a>
-                        <a href="{{ route('welcome'); }}"><li>Szukaj przedmiotu lub frazy</li></a>
+                        <a href="{{ route('find-sylabuses'); }}"><li>Szukaj przedmiotu lub frazy</li></a>
                         <a href="{{ route('welcome'); }}"><li>Pomoc oznaczeń</li></a>     
                         <a href="{{ route('welcome'); }}"><li>Opcja zarządzająca 2</li></a>
                         <a href="{{ route('welcome'); }}"><li>Opcja zarządzająca 3</li></a>
@@ -113,7 +113,10 @@
                                         <td>Uwagi</td>
                                     </tr>                                
                                 @empty
-                                    <p>Rekord jest pusty</p>
+                                    <p class="warnning">
+                                        Rekord jest pusty
+                                        <img src="{{ asset('images/open-on-new-page.png') }}" class="link-open-in-new-page">
+                                    </p>
                                 @endforelse
                             </tbody> 
                         </table>

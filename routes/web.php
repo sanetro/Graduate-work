@@ -37,3 +37,6 @@ Route::get('/panel/my-sylabuses',
 
 Route::match(['get', 'post'], '/panel/find-sylabuses', 
 [ActionController::class, 'showFoundSylabuses'])->name('find-sylabuses');
+
+Route::post('/panel/searchSylabuses', 
+[ActionController::class, 'searchSylabuses'])->name('searchSylabuses');
