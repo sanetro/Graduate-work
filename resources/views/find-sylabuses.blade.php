@@ -90,7 +90,7 @@
                     </div>
                     
                         
-                        
+                        @if ($lastSearchedWord != "")
                         <table class="subject-list-table">
                             <thead>
                                 <tr>
@@ -110,35 +110,36 @@
                             </thead>
                             <tbody>
                                 @forelse ($userSylabuses as $s)
-                                    <tr>
-                                        <td>{{ $s->code_subject }}</td>
+                                <tr>
+                                    <td>{{ $s->code_subject }}</td>
                                         <td>{{ $s->name_subject }}</td>
                                         <td>{{ $s->type_study }}</td>
                                         <td>{{ $s->speciality }}</td>
                                         <td>{{ $s->degree }}</td>
                                         <td>{{ $s->semester }}</td>
                                         <td>{{ $s->chair_id }}</td>
-
+                                        
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td>Sylabus</td>
                                         <td>Uwagi</td>
                                     </tr>                                
-                                @empty
+                                    @empty
                                     <div class="alert">Rekord jest pusty</div>
-                                @endforelse
-                            </tbody> 
-                        </table>
-                    </div>
-
-                </div>           
-
-
-                  
-                
-                
-            </div>
+                                    @endforelse
+                                </tbody> 
+                            </table>
+                        </div>
+                        @endif
+                        
+                    </div>           
+                    
+                    
+                    
+                    
+                    
+                </div>
         
     </body>
 </html>

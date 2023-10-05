@@ -38,9 +38,8 @@ class ActionController extends Controller
         $this->redirectUserIfIsNotLoggedIn();
 
         $userId = session()->get('user')['id'];
-        $userSylabusesId = UserToSylabus::where('user_id', $userId)->pluck('sylabus_id');
+        $userSylabuses = UserToSylabus::all();
         $thisUser = User::find($userId);
-        $userSylabuses = Sylabus_initialized::whereIn('id', $userSylabusesId)->get();
             
         if($thisUser != null) {
             return view('find-sylabuses', [ 
@@ -65,10 +64,27 @@ class ActionController extends Controller
                 ->orWhere('type_study', 'LIKE', '%' . $givenWord . '%')
                 ->orWhere('speciality', 'LIKE', '%' . $givenWord . '%')
                 ->orWhere('degree', 'LIKE', '%' . $givenWord . '%')
-                ->orWhere('semester', 'LIKE', '%' . $givenWord . '%');
+                ->orWhere('semester', 'LIKE', '%' . $givenWord . '%')
+                ->orWhere('code_subject', 'LIKE', $givenWord . '%')
+                ->orWhere('name_subject', 'LIKE', $givenWord . '%')
+                ->orWhere('type_study', 'LIKE', $givenWord . '%')
+                ->orWhere('speciality', 'LIKE', $givenWord . '%')
+                ->orWhere('degree', 'LIKE', $givenWord . '%')
+                ->orWhere('semester', 'LIKE', $givenWord . '%')
+                ->orWhere('code_subject', 'LIKE', '%' . $givenWord)
+                ->orWhere('name_subject', 'LIKE', '%' . $givenWord)
+                ->orWhere('type_study', 'LIKE', '%' . $givenWord)
+                ->orWhere('speciality', 'LIKE', '%' . $givenWord)
+                ->orWhere('degree', 'LIKE', '%' . $givenWord)
+                ->orWhere('semester', 'LIKE', '%' . $givenWord)
+                ->orWhere('code_subject', 'LIKE', $givenWord)
+                ->orWhere('name_subject', 'LIKE', $givenWord)
+                ->orWhere('type_study', 'LIKE', $givenWord)
+                ->orWhere('speciality', 'LIKE', $givenWord)
+                ->orWhere('degree', 'LIKE', $givenWord)
+                ->orWhere('semester', 'LIKE', $givenWord);
         })->get();
 
-        
         return view('find-sylabuses', [ 
             'account' => session()->get('user')['id'],
             'email' => session()->get('user')['email'],

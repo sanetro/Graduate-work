@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ActionController;
+use App\Http\Controllers\SylabusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,7 @@ Route::match(['get', 'post'], '/panel/find-sylabuses',
 
 Route::post('/panel/searchSylabuses', 
 [ActionController::class, 'searchSylabuses'])->name('searchSylabuses');
+
+
+Route::get('/{code}/{id}', [SylabusController::class, 'read']);
+Route::post('/{code}/{id}/change', [SylabusController::class, 'change'])->name('change');
