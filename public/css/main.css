@@ -299,6 +299,20 @@ body {
     background-repeat: no-repeat;
     background-position: 10px 10px;
 }
+.success {
+    border: 1px solid rgba(106, 192, 72, 0.596);
+    background-color: rgba(86, 255, 142, 0.74);
+    color:rgb(0, 0, 0);
+    width: 100%;
+    padding: 10px;
+    padding: 10px;
+    padding-left: 40px;
+    background-image: url("/images/warnning-sight.png");
+    background-size: cover; 
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
 
 .alert {
     border: 1px solid rgba(193, 204, 35, 0.945);
@@ -316,6 +330,7 @@ body {
 
 .edit-table {
     margin: 0 auto;
+    margin: 20px;
 }
 .edit-table tr td .edit-form input {
     margin-bottom: 5px;
@@ -333,7 +348,7 @@ h2 {
 }
 .custom-input-edit {
     margin: 5px;
-    width: 70%;
+    width: 90%;
     padding: 5px;
 }
 

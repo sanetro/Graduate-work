@@ -55,158 +55,534 @@
             </div>
 
             <div class="layout-panel-start">
+              @if (session('isUpdated') && true)
+                                  <p class="success">
+                                      Pomyślnie zapisano zmiany
+                                  </p>
+                              @endif
+
+                              @if (session('isUpdated') && false)
+                                  <p class="success">
+                                      This page has been updated.
+                                  </p>
+                              @endif
                 <table class="edit-table">
                     <tr>
-                        <td style="width:10%">
-                            
-                        </td>
-                        <td style="width:30%">
+                        
+                        <td style="width:50%">
                             <form class="edit-form" action="{{ route('change', ['code' => $code, 'id' => $id]) }}" method="POST">
                                 <div style="height: 800px; overflow-y: scroll; width: 100%;">
                                     <div class="edit-title-box">
                                         <h1><i>{{$sylabus->name_subject}}</i> </h1>
                                     </div>
+
                                     @csrf
-                                    @method('PUT')                                   
-                                        
-                                    <label for="code_subject"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                    <input class="custom-input-edit" type="text" name="code_subject" value="{{ $sylabus->code_subject }}" disabled>
-                                    Kod przedmiotu<br>
 
-                                    <label for="name_subject"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                    <input class="custom-input-edit" type="text" name="name_subject" value="{{ $sylabus->name_subject }}" disabled>
-                                    Nazwa przedmiotu<br>
-                            
-                                    <label for="type_study"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                    <input class="custom-input-edit" type="text" name="type_study" value="{{ $sylabus->type_study }}" disabled>
-                                    Typ studiów<br>
-
-                                    <label for="speciality"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                    <input class="custom-input-edit" type="text" name="speciality" value="{{ $sylabus->speciality }}" disabled>
-                                    Specjalność<br>
-
-                                    <label for="degree"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                    <input class="custom-input-edit" type="text" name="degree" value="{{ $sylabus->degree }}" disabled>
-                                    Stopień<br>
                                     
-                                    <label for="semester"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                    <input class="custom-input-edit" type="text" name="semester" value="{{ $sylabus->semester }}" disabled>
-                                    Semestr<br>
-                                    
-                                    <label for="chair_id"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                    <input class="custom-input-edit" type="text" name="chair_id" value="{{ $sylabus->chair_id }}" disabled>
-                                    Katedra<br>
-                                    
-                                    @if ($sylabusSuplementary != null)
-                                        <label for="other_way_of_teaching"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                        <input class="custom-input-edit" type="text" name="other_way_of_teaching" value="{{ $sylabusSuplementary->other_way_of_teaching ? $sylabusSuplementary->other_way_of_teaching : '' }}" required>
-                                        Inne sposoby nauczania<br>
-                                    @endif
-                                    
-                                    @if ($sylabusSuplementary != null)
-                                    <label for="form_of_assessment"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                    <input class="custom-input-edit" type="text" name="form_of_assessment" value="{{ $sylabusSuplementary->form_of_assessment ? $sylabusSuplementary->form_of_assessment : '' }}" required>
-                                    Forma zaliczniowa<br>
-                                    @endif
 
-                                    @if ($sylabusSuplementary != null)
-                                    <div style="height: 50px">
-                                        <label for="participation_of_ects_for_number_of_hours_lecturer"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                        <input class="custom-input-edit" type="text" name="participation_of_ects_for_number_of_hours_lecturer" value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_lecturer ? $sylabusSuplementary->participation_of_ects_for_number_of_hours_lecturer : '' }}" required>
-                                        <div class="edit-input-name">Udział w ECTS za liczbę godzin prowadzącego</div> 
-                                    </div>
-                                    @endif
+                                    @foreach ($sylabus->getFillable() as $s)
+                                        <label for="{{ $s }}">
+                                            <img 
+                                                src="{{ asset('images/question.png') }}" 
+                                                class="img-info-question-mark" 
+                                                id="{{ $s }}-image">
+                                        </label>
+                                        <input  
+                                                class="custom-input-edit" 
+                                                type="text" 
+                                                name="{{ $s }}" 
+                                                value="{{ $sylabus[$s] }}" 
+                                                disabled>
 
-                                    @if ($sylabusSuplementary != null)
-                                    <div style="height: 50px">
-                                        <label for="participation_of_ects_for_number_of_hours_lecturer"><img src="{{ asset('images/question.png') }}" class="img-info-question-mark"></label>
-                                        <input class="custom-input-edit" type="text" name="participation_of_ects_for_number_of_hours_lecturer" value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_lecturer ? $sylabusSuplementary->participation_of_ects_for_number_of_hours_lecturer : '' }}" required>
-                                        <div class="edit-input-name">Udział w ECTS za liczbę godzin prowadzącego</div> 
-                                    </div>
-                                    @endif
+                                        <i id="{{ $s }}"></i><br>
+                                    @endforeach
+
+                                  @if ($sylabusSuplementary != null)
                                         
                                     
-                                    
+
+                                    <label for="other_way_of_teaching">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="other_way_of_teaching" 
+                                      value="NOT Online lectures" 
+                                      required>
+
+                                  <i id="other_way_of_teaching"></i><br>
+                                                                          
+                                  <label for="form_of_assessment">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="form_of_assessment" 
+                                      value="Not FINNAL ExaM" 
+                                      required>
+
+                                  <i id="form_of_assessment"></i><br>
+                                                                          
+                                  <label for="participation_of_ects_for_number_of_hours_lecturer">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="number" 
+                                      name="participation_of_ects_for_number_of_hours_lecturer" 
+                                      value="234.1" 
+                                      required>
+
+                                  <i id="participation_of_ects_for_number_of_hours_lecturer"></i><br>
+                                                                          
+                                  <label for="participation_of_ects_for_number_of_hours_online">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="participation_of_ects_for_number_of_hours_online" 
+                                      value="1.99" 
+                                      required>
+
+                                  <i id="participation_of_ects_for_number_of_hours_online"></i><br>
+                                                                          
+                                  <label for="participation_of_ects_for_number_of_hours_own_work">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="participation_of_ects_for_number_of_hours_own_work" 
+                                      value="1" 
+                                      required>
+
+                                  <i id="participation_of_ects_for_number_of_hours_own_work"></i><br>
+                                                                          
+                                  <label for="description_of_the_prequesities">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="description_of_the_prequesities" 
+                                      value="None" 
+                                      required>
+
+                                  <i id="description_of_the_prequesities"></i><br>
+                                                                          
+                                  <label for="language_of_lessons">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="language_of_lessons" 
+                                      value="English" 
+                                      required>
+
+                                  <i id="language_of_lessons"></i><br>
+                                                                          
+                                  <label for="list_of_primary_literature_to_the_subject">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="list_of_primary_literature_to_the_subject" 
+                                      value="Book A, Book B" 
+                                      required>
+
+                                  <i id="list_of_primary_literature_to_the_subject"></i><br>
+                                                                          
+                                  <label for="list_of_suplementary_literature_to_the_subject">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="list_of_suplementary_literature_to_the_subject" 
+                                      value="Additional Book X, Additional Book Y" 
+                                      required>
+
+                                  <i id="list_of_suplementary_literature_to_the_subject"></i><br>
+                                                                          
+                                  <label for="lecturers_competence_to_teach_the_subject">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="lecturers_competence_to_teach_the_subject" 
+                                      value="Highly qualified" 
+                                      required>
+
+                                  <i id="lecturers_competence_to_teach_the_subject"></i><br>
+                                                                          
+                                  <label for="directional_effects_id">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="directional_effects_id" 
+                                      value="19" 
+                                      required>
+
+                                  <i id="directional_effects_id"></i><br>
+                                                                          
+                                  <label for="subject_effects_id">
+                                      <img 
+                                          src="{{ asset('images/question.png') }}" 
+                                          class="img-info-question-mark">
+                                  </label>
+                                  <input 
+                                      class="custom-input-edit" 
+                                      type="text" 
+                                      name="subject_effects_id" 
+                                      value="2" 
+                                      required>
+
+                                  <i id="subject_effects_id"></i><br>
+                                  @endif
                                     
                                 </div>
                                 <button class="custom-button-account" type="submit" style="width:505px">Zapisz zmiany</button>
-                                </form>
+                            </form>
                         </td>
-                        <td style="width:20%">
+                        <td>
                             <div class="hidden-help-info">
-                                <div id="content-code_subject">
-                                    <h2>Code subject</h2>
+                                 <div id="content-code_subject">
+                                    <h2>Kod przedmiotu</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter code subject here]
                                     </article>
-                                </div>
-                                <div id="content-name_subject">
-                                    <h2>Name subject</h2>
+                                  </div>
+                                  
+                                  <div id="content-name_subject">
+                                    <h2>Nazwa przedmiotu</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter subject name here]
                                     </article>
-                                </div>
-                                <div id="content-type_study">
-                                    <h2>Type Study</h2>
+                                  </div>
+                                  
+                                  <div id="content-type_study">
+                                    <h2>Typ studiów</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter study type here]
                                     </article>
-                                </div>
-                                <div id="content-speciality">
-                                    <h2>Speciality</h2>
+                                  </div>
+                                  
+                                  <div id="content-speciality">
+                                    <h2>Specjalność</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter speciality here]
                                     </article>
-                                </div>
-                                <div id="content-degree">
-                                    <h2>Degree</h2>
+                                  </div>
+                                  
+                                  <div id="content-degree">
+                                    <h2>Stopień</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter degree here]
                                     </article>
-                                </div>
-                                <div id="content-semester">
-                                    <h2>Semester</h2>
+                                  </div>
+                                  
+                                  <div id="content-semester">
+                                    <h2>Semestr</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter semester here]
                                     </article>
-                                </div>
-                                <div id="content-chair_id">
-                                    <h2>Chair</h2>
+                                  </div>
+                                  
+                                  <div id="content-chair_id">
+                                    <h2>Katedra</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter chair ID here]
                                     </article>
-                                </div>
-                                <div id="content-other_way_of_teaching">
-                                    <h2>Other way of teaching</h2>
+                                  </div>
+                                  
+                                  <div id="content-required">
+                                    <h2>Obowiązkowy</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter whether the subject is required here]
                                     </article>
-                                </div>
-                                <div id="content-form_of_assessment">
-                                    <h2>From of assessment</h2>
+                                  </div>
+                                  
+                                  <div id="content-calculator_for_subjects_to_order">
+                                    <h2>Kalkulator przedmiotów do zamówienia</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter whether the subject is in the calculator for subjects to order here]
                                     </article>
-                                </div>
-                                <div id="content-participation_of_ects_for_number_of_hours_with_lecturer">
-                                    <h2>Participation of ects for number of hours with lecturer</h2>
+                                  </div>
+                                  
+                                  <div id="content-status_subject">
+                                    <h2>Status przedmiotu</h2>
                                     <article>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum porro voluptates nam eaque iste itaque? Nemo eaque facere quia odio, aliquam laudantium totam reiciendis, laboriosam ea minus soluta quasi! Animi.
+                                      [Enter the status of the subject here]
                                     </article>
-                                </div>
+                                  </div>
+                                  
+                                  <div id="content-ects_summary">
+                                    <h2>Podsumowanie ECTS</h2>
+                                    <article>
+                                      [Enter the ECTS summary for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-total_number_of_hours">
+                                    <h2>Łączna liczba godzin</h2>
+                                    <article>
+                                      [Enter the total number of hours for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-lectures_number_of_hours">
+                                    <h2>Liczba godzin wykładów</h2>
+                                    <article>
+                                      [Enter the number of lecture hours for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-seminars_number_of_hours">
+                                    <h2>Liczba godzin seminariów</h2>
+                                    <article>
+                                      [Enter the number of seminar hours for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-exercise_number_of_hours">
+                                    <h2>Liczba godzin ćwiczeń</h2>
+                                    <article>
+                                      [Enter the number of exercise hours for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-type_of_exercise">
+                                    <h2>Typ ćwiczeń</h2>
+                                    <article>
+                                      [Enter the type of exercise for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-direction_name">
+                                    <h2>Nazwa kierunku</h2>
+                                    <article>
+                                      [Enter the name of the direction for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-subject_content_id">
+                                    <h2>ID treści przedmiotu</h2>
+                                    <article>
+                                      [Enter the ID of the subject content here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-number_of_hours_with_lecturer">
+                                    <h2>Liczba godzin z wykładowcą</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-number_of_hours_of_consultation">
+                                    <h2>Liczba godzin konsultacji</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-number_of_hours_participation_in_research">
+                                    <h2>Liczba godzin uczestnictwa w badaniach</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-number_of_hours_mandatory_practices_and_internships">
+                                    <h2>Liczba godzin w obowiązkowych praktykach i stażach</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-number_of_hours_participations_in_the_exam_and_credits">
+                                    <h2>Liczba godzin na egzaminach i kryteriach</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-number_of_hours_online_classes">
+                                    <h2>Liczba godzin prowdzonych zajęć online</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-number_of_hours_own_work">
+                                    <h2>Liczba godzin pracy własnej</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-study_profile">
+                                    <h2>Profil studiów</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-other_way_of_teaching">
+                                    <h2>Inna forma nauczania</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-form_of_assessment">
+                                    <h2>Forma zaliczenia</h2>
+                                    <article>
+                                      [Enter the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-participation_of_ects_for_number_of_hours_lecturer">
+                                    <h2>Udział ECTS za liczbę godzin z wykładowcą</h2>
+                                    <article>
+                                      [Enter the ECTS participation for the number of hours with the lecturer for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-participation_of_ects_for_number_of_hours_online">
+                                    <h2>Udział ECTS za liczbę godzin online</h2>
+                                    <article>
+                                      [Enter the ECTS participation for the number of hours online for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-participation_of_ects_for_number_of_hours_own_work">
+                                    <h2>Udział ECTS za liczbę godzin pracy własnej</h2>
+                                    <article>
+                                      [Enter the ECTS participation for the number of hours of own work for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-description_of_the_prequesities">
+                                    <h2>Opis warunków wstępnych</h2>
+                                    <article>
+                                      [Enter a description of the prerequisites for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-language_of_lessons">
+                                    <h2>Język wykładów</h2>
+                                    <article>
+                                      [Enter the language of the lessons for the subject here]
+                                    </article>
+                                  </div>
+                                  
+                                  <div id="content-list_of_primary_literature_to_the_subject">
+                                    <h2>Lista podstawowej literatury do przedmiotu</h2>
+                                    <article>
+                                      [Enter a list of primary literature for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-list_of_suplementary_literature_to_the_subject">
+                                    <h2>Lista uzupełniającej literatury do przedmiotu</h2>
+                                    <article>
+                                      [Enter a list of primary literature for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-lecturers_competence_to_teach_the_subject">
+                                    <h2>Kompetencje prowadzącego przedmiot</h2>
+                                    <article>
+                                      [Enter a list of primary literature for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-directional_effects_id">
+                                    <h2>Effekty kierunkowe</h2>
+                                    <article>
+                                      [Enter a list of primary literature for the subject here]
+                                    </article>
+                                  </div>
+
+                                  <div id="content-subject_effects_id">
+                                    <h2>Effekty przedmiotu</h2>
+                                    <article>
+                                      [Enter a list of primary literature for the subject here]
+                                    </article>
+                                  </div>
+                                  
                                 <script>
                                     
                                     let labelFors = [
-                                        "content-code_subject",
-                                        "content-name_subject",
-                                        "content-type_study",
-                                        "content-speciality",
-                                        "content-degree",
-                                        "content-semester",
-                                        "content-chair_id",
-                                        "content-other_way_of_teaching",
-                                        "content-form_of_assessment",
-                                        "content-participation_of_ects_for_number_of_hours_with_lecturer"
+                                        'content-code_subject',
+                                        'content-name_subject',
+                                        'content-type_study',
+                                        'content-speciality',
+                                        'content-degree',
+                                        'content-semester',
+                                        'content-chair_id',
+                                        'content-required',
+                                        'content-calculator_for_subjects_to_order',
+                                        'content-status_subject',
+                                        'content-ects_summary',
+                                        'content-total_number_of_hours',
+                                        'content-lectures_number_of_hours',
+                                        'content-seminars_number_of_hours',
+                                        'content-exercise_number_of_hours',
+                                        'content-type_of_exercise',
+                                        'content-direction_name',
+                                        'content-subject_content_id',
+                                        'content-number_of_hours_with_lecturer',
+                                        'content-number_of_hours_of_consultation',
+                                        'content-number_of_hours_participation_in_research',
+                                        'content-number_of_hours_mandatory_practices_and_internships',
+                                        'content-number_of_hours_participations_in_the_exam_and_credits',
+                                        'content-number_of_hours_online_classes',
+                                        'content-number_of_hours_own_work',
+                                        'content-study_profile',
+                                        'content-other_way_of_teaching',
+                                        'content-form_of_assessment',
+                                        'content-participation_of_ects_for_number_of_hours_lecturer',
+                                        'content-participation_of_ects_for_number_of_hours_online',
+                                        'content-participation_of_ects_for_number_of_hours_own_work',
+                                        'content-description_of_the_prequesities',
+                                        'content-language_of_lessons',
+                                        'content-list_of_primary_literature_to_the_subject',
+                                        'content-list_of_suplementary_literature_to_the_subject',
+                                        'content-lecturers_competence_to_teach_the_subject',
+                                        'content-directional_effects_id',
+                                        'content-subject_effects_id',
                                     ];
 
 

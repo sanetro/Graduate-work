@@ -10,10 +10,13 @@ class Sylabus_suplementary extends Model
     use HasFactory;
 
     protected $table = 'sylabus_suplementary'; // Nazwa tabeli w bazie danych, jeśli różni się od nazwy modelu
-
+    public $timestamps = false;
+    
+    protected $hidden = [
+        'id'
+    ];
     
     protected $fillable = [
-        'id',
         'other_way_of_teaching',
         'form_of_assessment',
         'participation_of_ects_for_number_of_hours_lecturer',
