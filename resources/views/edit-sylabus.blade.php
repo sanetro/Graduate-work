@@ -67,6 +67,7 @@
                                   </p>
                               @endif
                 <table class="edit-table">
+                  
                     <tr>
                         
                         <td style="width:50%">
@@ -77,8 +78,7 @@
                                     </div>
 
                                     @csrf
-
-                                    
+                                    @method('POST')
 
                                     @foreach ($sylabus->getFillable() as $s)
                                         <label for="{{ $s }}">

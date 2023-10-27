@@ -43,5 +43,5 @@ Route::post('/panel/searchSylabuses',
 [ActionController::class, 'searchSylabuses'])->name('searchSylabuses');
 
 
-Route::get('/{code}/{id}', [SylabusController::class, 'read'])->name('read');
-Route::post('/{code}/{id}/change', [SylabusController::class, 'change'])->name('change');
+Route::match(['get', 'post'], '/{code}/{id}', [SylabusController::class, 'read'])->name('read');
+Route::match(['get', 'post'], '/{code}/{id}/change', [SylabusController::class, 'change'])->name('change');
