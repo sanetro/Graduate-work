@@ -55,17 +55,17 @@
             </div>
 
             <div class="layout-panel-start">
-              @if (session('isUpdated') && true)
-                                  <p class="success">
-                                      Pomyślnie zapisano zmiany
-                                  </p>
-                              @endif
-
-                              @if (session('isUpdated') && false)
-                                  <p class="success">
-                                      This page has been updated.
-                                  </p>
-                              @endif
+            
+            @if (request()->input('flag')==0)
+                <p class="success">
+                    Pomyślnie zapisano zmiany
+                </p>
+            @elseif (request()->input('flag')==1)
+                <p class="warn">
+                    Nie udało się zapisać zmian
+                </p>
+            @endif
+          
                 <table class="edit-table">
                   
                     <tr>
@@ -110,7 +110,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="other_way_of_teaching" 
-                                      value="NOT Online lectures" 
+                                      value="{{ $sylabusSuplementary->other_way_of_teaching }}" 
                                       required>
 
                                   <i id="other_way_of_teaching"></i><br>
@@ -124,7 +124,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="form_of_assessment" 
-                                      value="Not FINNAL ExaM" 
+                                      value="{{ $sylabusSuplementary->form_of_assessment }}" 
                                       required>
 
                                   <i id="form_of_assessment"></i><br>
@@ -138,7 +138,7 @@
                                       class="custom-input-edit" 
                                       type="number" 
                                       name="participation_of_ects_for_number_of_hours_lecturer" 
-                                      value="234.1" 
+                                      value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_lecturer }}" 
                                       required>
 
                                   <i id="participation_of_ects_for_number_of_hours_lecturer"></i><br>
@@ -152,7 +152,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="participation_of_ects_for_number_of_hours_online" 
-                                      value="1.99" 
+                                      value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_online }}" 
                                       required>
 
                                   <i id="participation_of_ects_for_number_of_hours_online"></i><br>
@@ -166,7 +166,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="participation_of_ects_for_number_of_hours_own_work" 
-                                      value="1" 
+                                      value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_own_work }}" 
                                       required>
 
                                   <i id="participation_of_ects_for_number_of_hours_own_work"></i><br>
@@ -180,7 +180,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="description_of_the_prequesities" 
-                                      value="None" 
+                                      value="{{ $sylabusSuplementary->description_of_the_prequesities }}" 
                                       required>
 
                                   <i id="description_of_the_prequesities"></i><br>
@@ -194,7 +194,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="language_of_lessons" 
-                                      value="English" 
+                                      value="{{ $sylabusSuplementary->language_of_lessons }}" 
                                       required>
 
                                   <i id="language_of_lessons"></i><br>
@@ -208,7 +208,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="list_of_primary_literature_to_the_subject" 
-                                      value="Book A, Book B" 
+                                      value="{{ $sylabusSuplementary->list_of_primary_literature_to_the_subject }}" 
                                       required>
 
                                   <i id="list_of_primary_literature_to_the_subject"></i><br>
@@ -222,7 +222,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="list_of_suplementary_literature_to_the_subject" 
-                                      value="Additional Book X, Additional Book Y" 
+                                      value="{{ $sylabusSuplementary->list_of_suplementary_literature_to_the_subject }}" 
                                       required>
 
                                   <i id="list_of_suplementary_literature_to_the_subject"></i><br>
@@ -236,7 +236,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="lecturers_competence_to_teach_the_subject" 
-                                      value="Highly qualified" 
+                                      value="{{ $sylabusSuplementary->lecturers_competence_to_teach_the_subject }}" 
                                       required>
 
                                   <i id="lecturers_competence_to_teach_the_subject"></i><br>
@@ -250,7 +250,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="directional_effects_id" 
-                                      value="19" 
+                                      value="{{ $sylabusSuplementary->directional_effects_id }}" 
                                       required>
 
                                   <i id="directional_effects_id"></i><br>
@@ -264,7 +264,7 @@
                                       class="custom-input-edit" 
                                       type="text" 
                                       name="subject_effects_id" 
-                                      value="2" 
+                                      value="{{ $sylabusSuplementary->subject_effects_id}}" 
                                       required>
 
                                   <i id="subject_effects_id"></i><br>

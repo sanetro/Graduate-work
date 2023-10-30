@@ -106,7 +106,7 @@
                                         <td>{{ $s->semester }}</td>
                                         <td>{{ $s->chair_id }}</td>
 
-                                        <td><a href="/{{$s->code_subject}}/{{$s->id}}"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
+                                        <td><a href="/{{$s->code_subject}}/{{$s->id}}?flag=None"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td>Sylabus</td>

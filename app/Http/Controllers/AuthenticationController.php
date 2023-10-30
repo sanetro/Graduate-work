@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Sylabus_initialized;
+use App\Models\Sylabus_suplementary;
 use Illuminate\Http\Request;
 
 
@@ -42,6 +43,7 @@ class AuthenticationController extends Controller
                 'department' => session()->get('user')['department'],
                 'sylabus' => Sylabus_initialized::all()
             ]);
+            
         } else {
             return route('welcome');
         }        

@@ -18,7 +18,7 @@ class SylabusController extends Controller
         if (session()->get('user')) 
         {
             $suplementary = Sylabus_suplementary::find($r->id);
-            
+           
             return view("edit-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
@@ -36,24 +36,33 @@ class SylabusController extends Controller
 
     public function change(Request $r) {
     
-    
-        $suply = Sylabus_suplementary::where('id', $r->id)
-            ->update([
-                'other_way_of_teaching' =>                               $r->input('other_way_of_teaching'),
-                'form_of_assessment' =>                                  $r->input('form_of_assessment'),
-                'participation_of_ects_for_number_of_hours_lecturer' =>  $r->input('participation_of_ects_for_number_of_hours_lecturer'),
-                'participation_of_ects_for_number_of_hours_online' =>    $r->input('participation_of_ects_for_number_of_hours_online'),
-                'participation_of_ects_for_number_of_hours_own_work' =>  $r->input('participation_of_ects_for_number_of_hours_own_work'),
-                'description_of_the_prequesities' =>                     $r->input('description_of_the_prequesities'),
-                'language_of_lessons' =>                                 $r->input('language_of_lessons'),
-                'list_of_primary_literature_to_the_subject' =>           $r->input('list_of_primary_literature_to_the_subject'),
-                'list_of_suplementary_literature_to_the_subject' =>      $r->input('list_of_suplementary_literature_to_the_subject'),
-                'lecturers_competence_to_teach_the_subject' =>           $r->input('lecturers_competence_to_teach_the_subject'),
-                'directional_effects_id' =>                              $r->input('directional_effects_id'),
-                'subject_effects_id' =>                                  $r->input('subject_effects_id'),
-        ]);
+        if (
+            $suply = Sylabus_suplementary::where('id', $r->id)
+                ->update([
+                    'other_way_of_teaching' =>                               $r->input('other_way_of_teaching'),
+                    'form_of_assessment' =>                                  $r->input('form_of_assessment'),
+                    'participation_of_ects_for_number_of_hours_lecturer' =>  $r->input('participation_of_ects_for_number_of_hours_lecturer'),
+                    'participation_of_ects_for_number_of_hours_online' =>    $r->input('participation_of_ects_for_number_of_hours_online'),
+                    'participation_of_ects_for_number_of_hours_own_work' =>  $r->input('participation_of_ects_for_number_of_hours_own_work'),
+                    'description_of_the_prequesities' =>                     $r->input('description_of_the_prequesities'),
+                    'language_of_lessons' =>                                 $r->input('language_of_lessons'),
+                    'list_of_primary_literature_to_the_subject' =>           $r->input('list_of_primary_literature_to_the_subject'),
+                    'list_of_suplementary_literature_to_the_subject' =>      $r->input('list_of_suplementary_literature_to_the_subject'),
+                    'lecturers_competence_to_teach_the_subject' =>           $r->input('lecturers_competence_to_teach_the_subject'),
+                    'directional_effects_id' =>                              $r->input('directional_effects_id'),
+                    'subject_effects_id' =>                                  $r->input('subject_effects_id'),
+            ])
+        ) 
+        {
+            // Transfer with successful flag
+            return redirect()->route('read', ['id' => $r->id, 'code' => $r->code, 'flag'=>true]);
+        }
+        else 
+        {
+            // Transfer with unsuccessful flag
+            return redirect()->route('read', ['id' => $r->id, 'code' => $r->code, 'flag'=>false]);
+        }
 
-        // Przekieruj użytkownika do widoku edycji sylabusa
-        return redirect("/panel");
+        
     }
 }
