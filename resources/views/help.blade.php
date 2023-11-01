@@ -59,9 +59,9 @@
                 <div class="panel-box">
                     <ol class="action-list-type">
                         <a href="{{ route('panel'); }}"><li>Wszystkie przedmioty</li></a>
-                        <a href="{{ route('my-sylabuses'); }}"><li class="selected-list">Wyświetl moje przedmioty</li></a>
+                        <a href="{{ route('my-sylabuses'); }}"><li>Wyświetl moje przedmioty</li></a>
                         <a href="{{ route('find-sylabuses'); }}"><li>Szukaj przedmiotu lub frazy</li></a>
-                        <a href="{{ route('help'); }}"><li>Pomoc oznaczeń</li></a><br>
+                        <a href="{{ route('help'); }}"><li class="selected-list">Pomoc oznaczeń</li></a><br>
                     </ol>                    
                 </div>
                 
@@ -73,51 +73,7 @@
                     <div class="panel-list">
                         <p id="list-of-subjects-p" class="header-of-container">Moja lista przedmiotów</p>
                         
-                        <table class="subject-list-table">
-                            <thead>
-                                <tr>
-                                    <td>Kod przedmiotu</td>
-                                    <td>Nazwa</td>
-                                    <td>Koordynator/rzy</td>
-                                    <td>Rodzaj studiów</td>
-                                    <td>Specjalizacja</td>
-                                    <td>Stopień Studiów</td>
-                                    <td>Semestr</td>
-                                    <td>SZG</td>
-                                    <td>TRP</td>
-                                    <td>EFP</td>
-                                    <td>Sylabus</td>
-                                    <td>Uwagi</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($userSylabuses as $s)
-                                    <tr>
-                                        <td>{{ $s->code_subject }}</td>
-                                        <td>{{ $s->name_subject }}</td>
-                                        <td>{{ $s->type_study }}</td>
-                                        <td>{{ $s->speciality }}</td>
-                                        <td>{{ $s->degree }}</td>
-                                        <td>{{ $s->semester }}</td>
-                                        <td>{{ $s->chair_id }}</td>
-
-                                        <td>
-                                            <a href="/{{$s->code_subject}}/{{$s->id}}?flag=None">
-                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Edytuj przedmiot">
-                                            </a>
-                                        </td>
-                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
-                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
-                                        <td>Sylabus</td>
-                                        <td>Uwagi</td>
-                                    </tr>                                
-                                @empty
-                                    <div class="alert">
-                                        Brak przedmiotów przypisanych do tego konta. Skontaktuj się z administratorem.
-                                    </div>
-                                @endforelse
-                            </tbody> 
-                        </table>
+                        
                     </div>
 
                 </div>           

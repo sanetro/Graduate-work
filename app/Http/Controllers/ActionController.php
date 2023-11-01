@@ -25,10 +25,10 @@ class ActionController extends Controller
             
         if($thisUser != null) {
             return view('my-sylabuses', [ 
-            'account' => $thisUser,
-            'email' => session()->get('user')['email'],
-            'userSylabuses' => $userSylabuses,
-        ]);
+                'account' => $thisUser,
+                'email' => session()->get('user')['email'],
+                'userSylabuses' => $userSylabuses,
+            ]);
         }
         return redirect()->route("panel");
     }
@@ -91,5 +91,11 @@ class ActionController extends Controller
             'userSylabuses' => $sylabusesByGivenWord,
             'lastSearchedWord' => $givenWord,
         ]);   
+    }
+    public function showHelp() {
+        return view('help', [ 
+            'account' => session()->get('user')['id'],
+            'email' => session()->get('user')['email'],
+        ]);
     }
 }   

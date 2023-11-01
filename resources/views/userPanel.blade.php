@@ -61,12 +61,7 @@
                         <a href="{{ route('panel'); }}"><li class="selected-list">Wszystkie przedmioty</li></a>
                         <a href="{{ route('my-sylabuses'); }}"><li>Wyświetl moje przedmioty</li></a>
                         <a href="{{ route('find-sylabuses'); }}"><li>Szukaj przedmiotu lub frazy</li></a>
-                        <a href="{{ route('welcome'); }}"><li>Pomoc oznaczeń</li></a>     
-                        <a href="{{ route('welcome'); }}"><li>Opcja zarządzająca 2</li></a>
-                        <a href="{{ route('welcome'); }}"><li>Opcja zarządzająca 3</li></a>
-                        <a href="{{ route('welcome'); }}"><li>Opcja zarządzająca 4</li></a>                        
-                        <a href="{{ route('welcome'); }}"><li>Opcja zarządzająca 5</li></a>
-                        <a href="{{ route('welcome'); }}"><li>Opcja zarządzająca 6</li></a><br>
+                        <a href="{{ route('help'); }}"><li>Pomoc oznaczeń</li></a><br>
                     </ol>                    
                 </div>
                 
@@ -106,7 +101,11 @@
                                         <td>{{ $s->semester }}</td>
                                         <td>{{ $s->chair_id }}</td>
 
-                                        <td><a href="/{{$s->code_subject}}/{{$s->id}}?flag=None"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
+                                        <td>
+                                            <a href="/{{$s->code_subject}}/{{$s->id}}?flag=None">
+                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Edytuj przedmiot">
+                                            </a>
+                                        </td>
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
                                         <td>Sylabus</td>

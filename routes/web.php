@@ -36,6 +36,9 @@ Route::get('/panel/account',
 Route::get('/panel/my-sylabuses', 
 [ActionController::class, 'showMySylabuses'])->name('my-sylabuses');
 
+Route::get('/panel/help', 
+[ActionController::class, 'showHelp'])->name('help');
+
 Route::match(['get', 'post'], '/panel/find-sylabuses', 
 [ActionController::class, 'showFoundSylabuses'])->name('find-sylabuses');
 

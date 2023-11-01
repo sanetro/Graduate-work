@@ -55,12 +55,12 @@ class SylabusController extends Controller
         ) 
         {
             // Transfer with successful flag
-            return redirect()->route('read', ['id' => $r->id, 'code' => $r->code, 'flag'=>true]);
+            return redirect()->route('read', ['id' => $r->id, 'code' => $r->code, 'flag'=>0]);
         }
         else 
         {
             // Transfer with unsuccessful flag
-            return redirect()->route('read', ['id' => $r->id, 'code' => $r->code, 'flag'=>false]);
+            return redirect()->route('read', ['id' => $r->id, 'code' => $r->code, 'flag'=>1]);
         }
 
         

@@ -61,8 +61,8 @@
                     Pomyślnie zapisano zmiany
                 </p>
             @elseif (request()->input('flag')==1)
-                <p class="warn">
-                    Nie udało się zapisać zmian
+                <p class="alert">
+                    Nie odnotowano żadnych zmian
                 </p>
             @endif
           
@@ -100,6 +100,7 @@
                                   @if ($sylabusSuplementary != null)
                                         
                                     
+                                  <b>Inna forma nauczania</b><br>
 
                                     <label for="other_way_of_teaching">
                                       <img 
@@ -113,22 +114,25 @@
                                       value="{{ $sylabusSuplementary->other_way_of_teaching }}" 
                                       required>
 
+
                                   <i id="other_way_of_teaching"></i><br>
-                                                                          
+                                                
+                                  <b>Forma zaliczenia</b><br>
                                   <label for="form_of_assessment">
                                       <img 
                                           src="{{ asset('images/question.png') }}" 
                                           class="img-info-question-mark">
                                   </label>
-                                  <input 
-                                      class="custom-input-edit" 
-                                      type="text" 
-                                      name="form_of_assessment" 
-                                      value="{{ $sylabusSuplementary->form_of_assessment }}" 
-                                      required>
+                                  <select class="custom-input-edit" name="form_of_assessment" style="background: white">                                 ">
+                                    <option value="Egzamin" @if($sylabusSuplementary->form_of_assessment == "Egzamin") selected @endif>Egzamin</option>
+                                    <option value="Projekt" @if($sylabusSuplementary->form_of_assessment == "Projekt") selected @endif>Projekt</option>
+                                    <option value="Udział" @if($sylabusSuplementary->form_of_assessment == "Udział") selected @endif>Udział</option>
+                                  </select>
 
                                   <i id="form_of_assessment"></i><br>
-                                                                          
+                                  
+                                  <b>Udział ECTS za liczbę godzin z wykładowcą</b><br>
+                                  
                                   <label for="participation_of_ects_for_number_of_hours_lecturer">
                                       <img 
                                           src="{{ asset('images/question.png') }}" 
@@ -142,7 +146,9 @@
                                       required>
 
                                   <i id="participation_of_ects_for_number_of_hours_lecturer"></i><br>
-                                                                          
+                                  
+                                  <b>Udział ECTS za liczbę godzin online</b><br>
+
                                   <label for="participation_of_ects_for_number_of_hours_online">
                                       <img 
                                           src="{{ asset('images/question.png') }}" 
@@ -150,13 +156,15 @@
                                   </label>
                                   <input 
                                       class="custom-input-edit" 
-                                      type="text" 
+                                      type="number" 
                                       name="participation_of_ects_for_number_of_hours_online" 
                                       value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_online }}" 
                                       required>
 
                                   <i id="participation_of_ects_for_number_of_hours_online"></i><br>
                                                                           
+                                  <b>Udział ECTS za liczbę godzin pracy własnej</b><br>
+
                                   <label for="participation_of_ects_for_number_of_hours_own_work">
                                       <img 
                                           src="{{ asset('images/question.png') }}" 
@@ -164,12 +172,14 @@
                                   </label>
                                   <input 
                                       class="custom-input-edit" 
-                                      type="text" 
+                                      type="number" 
                                       name="participation_of_ects_for_number_of_hours_own_work" 
                                       value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_own_work }}" 
                                       required>
 
                                   <i id="participation_of_ects_for_number_of_hours_own_work"></i><br>
+                                  
+                                  <b>Opis warunków wstępnych</b><br>
                                                                           
                                   <label for="description_of_the_prequesities">
                                       <img 
@@ -184,7 +194,9 @@
                                       required>
 
                                   <i id="description_of_the_prequesities"></i><br>
-                                                                          
+                                                                    
+                                  <b>Język wykładów</b><br>
+
                                   <label for="language_of_lessons">
                                       <img 
                                           src="{{ asset('images/question.png') }}" 
@@ -198,35 +210,42 @@
                                       required>
 
                                   <i id="language_of_lessons"></i><br>
-                                                                          
+                                                    
+                                  <b>Lista podstawowej literatury do przedmiotu</b><br>
+
                                   <label for="list_of_primary_literature_to_the_subject">
                                       <img 
                                           src="{{ asset('images/question.png') }}" 
                                           class="img-info-question-mark">
                                   </label>
-                                  <input 
-                                      class="custom-input-edit" 
-                                      type="text" 
-                                      name="list_of_primary_literature_to_the_subject" 
-                                      value="{{ $sylabusSuplementary->list_of_primary_literature_to_the_subject }}" 
-                                      required>
+                                  <textarea 
+                                    class="custom-input-edit" 
+                                    style="height:100px;" 
+                                    name="list_of_primary_literature_to_the_subject" 
+                                    required>{{ $sylabusSuplementary->list_of_primary_literature_to_the_subject }}
+                                  </textarea>
+
 
                                   <i id="list_of_primary_literature_to_the_subject"></i><br>
                                                                           
+                                  <b>Lista uzupełniającej literatury do przedmiotu</b><br>
+
                                   <label for="list_of_suplementary_literature_to_the_subject">
                                       <img 
                                           src="{{ asset('images/question.png') }}" 
                                           class="img-info-question-mark">
                                   </label>
-                                  <input 
+                                  <textarea 
                                       class="custom-input-edit" 
-                                      type="text" 
+                                      style="height:100px;" 
                                       name="list_of_suplementary_literature_to_the_subject" 
-                                      value="{{ $sylabusSuplementary->list_of_suplementary_literature_to_the_subject }}" 
-                                      required>
+                                      required>{{ $sylabusSuplementary->list_of_suplementary_literature_to_the_subject }}
+                                   </textarea>
 
                                   <i id="list_of_suplementary_literature_to_the_subject"></i><br>
                                                                           
+                                  <b>Kompetencje prowadzącego przedmiot</b><br>
+
                                   <label for="lecturers_competence_to_teach_the_subject">
                                       <img 
                                           src="{{ asset('images/question.png') }}" 
@@ -461,21 +480,21 @@
                                   <div id="content-other_way_of_teaching">
                                     <h2>Inna forma nauczania</h2>
                                     <article>
-                                      [Enter the number of hours with the lecturer for the subject here]
+                                      [dsadas]
                                     </article>
                                   </div>
 
                                   <div id="content-form_of_assessment">
                                     <h2>Forma zaliczenia</h2>
                                     <article>
-                                      [Enter the number of hours with the lecturer for the subject here]
+                                      Prowadzący przedmiot może wybrać formę zaliczenia.
+                                      Przykład: Egzamin, projekt lub udział w zajęciach.  
                                     </article>
                                   </div>
 
                                   <div id="content-participation_of_ects_for_number_of_hours_lecturer">
                                     <h2>Udział ECTS za liczbę godzin z wykładowcą</h2>
-                                    <article>
-                                      [Enter the ECTS participation for the number of hours with the lecturer for the subject here]
+                                    <article>Liczba punktów przedzielana dla studenta podczas godzin z wykładowcą
                                     </article>
                                   </div>
                                   
@@ -631,7 +650,14 @@
                                             }
                                         });
                                     });
-
+                                  
+                                  // Delete success message after 8s
+                                  setTimeout(function() {
+                                      var successMessage = document.querySelector('.success');
+                                      var warnMessage = document.querySelector('.warn');
+                                      if (successMessage) successMessage.style.display = 'none';
+                                      if (warnMessage) warnMessage.style.display = 'none';                                      
+                                  }, 8000);
 
                                 </script>
                                 

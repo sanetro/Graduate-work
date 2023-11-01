@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Sylabus_initialized;
-use App\Models\Sylabus_suplementary;
+
 use Illuminate\Http\Request;
 
 
