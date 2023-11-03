@@ -19,7 +19,7 @@ class AccountController extends Controller
         $chair = $thisUser->chairs->name;
         $department = $thisUser->chairs->departments->name;
         
-        if($thisUser != null) {
+        if($thisUser) {
             return view('account-information', [ 
             'account' => $thisUser,
             'email' => session()->get('user')['email'],

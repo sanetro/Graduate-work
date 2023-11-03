@@ -16,17 +16,19 @@ class SylabusController extends Controller
     
         // if user exitst in DB go to userPanel with collection: email, role, department
         if (session()->get('user')) 
-        {
+        {   
+            $initialized = Sylabus_initialized::find($r->id);
             $suplementary = Sylabus_suplementary::find($r->id);
            
             return view("edit-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
                 'department' =>         session()->get('user')['department'],
-                'sylabus' =>            Sylabus_initialized::find($r->id),
-                'sylabusSuplementary' =>Sylabus_suplementary::find($r->id),
+                'sylabus' =>            $initialized,
+                'sylabusSuplementary' =>$suplementary,
                 'code' =>               $r->code,
                 'id' =>                 $r->id,
+                'chair_name' =>         $initialized->chair->name
             ]);
         } else {
             return redirect()->back();
@@ -49,8 +51,6 @@ class SylabusController extends Controller
                     'list_of_primary_literature_to_the_subject' =>           $r->input('list_of_primary_literature_to_the_subject'),
                     'list_of_suplementary_literature_to_the_subject' =>      $r->input('list_of_suplementary_literature_to_the_subject'),
                     'lecturers_competence_to_teach_the_subject' =>           $r->input('lecturers_competence_to_teach_the_subject'),
-                    'directional_effects_id' =>                              $r->input('directional_effects_id'),
-                    'subject_effects_id' =>                                  $r->input('subject_effects_id'),
             ])
         ) 
         {
