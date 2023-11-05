@@ -75,7 +75,7 @@
                     <tr>
                       <td>Nazwa</td>
                       <td>Atrybut</td>
-                      <td>Szczegóły</td>
+                      <td style="width: 40%">Szczegóły</td>
                       <td>Komentarz</td>
                     </tr>
                   </thead>
@@ -132,30 +132,29 @@
                       @if ($sylabusSuplementary != null)
                       <tr>
                         <td>
-                          <b>Inna forma nauczania</b>
+                          <b id="title-other_way_of_teaching"></b>
                         </td>
                         <td>
-                          Niedostępny
+                          <i id="format-other_way_of_teaching"></i>                
                         </td>
                         <td>
-                          <input 
-                            class="custom-input-edit" 
-                            type="text" 
-                            name="other_way_of_teaching" 
-                            value="{{ $sylabusSuplementary->other_way_of_teaching }}" 
-                            required>
+                          <textarea 
+                          class="custom-input-edit" 
+                          style="height:100px;" 
+                          name="other_way_of_teaching" 
+                          >{{ $sylabusSuplementary->other_way_of_teaching }}</textarea>
                         </td>
                         <td>
-                          Wewnętrzny identyfikator przedmiotu
+                          <i id="comment-other_way_of_teaching"></i>
                         </td>
                       </tr>
 
                       <tr>
                         <td>
-                          <b>Forma zaliczenia</b>
+                          <b id="title-form_of_assessment"></b>
                         </td>
                         <td>
-                          tekst (100 zn.)
+                          <i id="format-form_of_assessment"></i>                
                         </td>
                         <td>
                           <select class="custom-input-edit" name="form_of_assessment" style="background: white">
@@ -165,78 +164,84 @@
                           </select>
                         </td>
                         <td>
-                          Kod przedmiotu w dokumentacji dotyczącej kształcenia
+                          <i id="comment-form_of_assessment"></i>
                         </td>
                       </tr>
 
 
                       <tr>
                         <td>
-                          <b>Udział ECTS za liczbę godzin z wykładowcą</b>
+                          <b id="title-participation_of_ects_for_number_of_hours_lecturer"></b>
                         </td>
                         <td>
-
+                          <i id="format-participation_of_ects_for_number_of_hours_lecturer"></i>                
                         </td>
                         <td>
                           <input 
                           class="custom-input-edit"
                           type="number" 
+                          step="any"
                           name="participation_of_ects_for_number_of_hours_lecturer" 
                           value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_lecturer }}" 
-                          required>
+                          >
   
                         </td>
                         <td>
+                          <i id="comment-participation_of_ects_for_number_of_hours_lecturer"></i>
 
                         </td>
                       </tr>
 
                       <tr>
                         <td>
-                          <b>Udział ECTS za liczbę godzin online</b>
+                          <b id="title-participation_of_ects_for_number_of_hours_online"></b>
                         </td>
                         <td>
-
+                          <i id="format-participation_of_ects_for_number_of_hours_online"></i>                
                         </td>
                         <td>
                           <input 
                         class="custom-input-edit" 
                         type="number" 
+                        step="any"
                         name="participation_of_ects_for_number_of_hours_online" 
                         value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_online }}" 
-                        required>
+                        >
                         </td>
                         <td>
+                          <i id="comment-participation_of_ects_for_number_of_hours_online"></i>
 
                         </td>
                       </tr>
 
                       <tr>
                         <td>
-                          <b>Udział ECTS za liczbę godzin pracy własnej</b>
+                          <b id="title-participation_of_ects_for_number_of_hours_own_work"></b>
                         </td>
                         <td>
-
+                          <i id="format-participation_of_ects_for_number_of_hours_own_work"></i>                
                         </td>
                         <td>
                           <input 
                           class="custom-input-edit" 
                           type="number" 
                           name="participation_of_ects_for_number_of_hours_own_work" 
+                          step="any"
                           value="{{ $sylabusSuplementary->participation_of_ects_for_number_of_hours_own_work }}" 
-                          required>
+                          >
                         </td>
                         <td>
+                          <i id="comment-participation_of_ects_for_number_of_hours_own_work"></i>
 
                         </td>
                       </tr>
 
                       <tr>
                         <td>
-                          <b>Opis warunków wstępnych</b>
+                          <b id="title-description_of_the_prequesities"></b>
                         </td>
                         <td>
-
+                          <i id="format-description_of_the_prequesities"></i>                
                         </td>
                         <td>
                           <input 
@@ -244,88 +249,88 @@
                           type="text" 
                           name="description_of_the_prequesities" 
                           value="{{ $sylabusSuplementary->description_of_the_prequesities }}" 
-                          required>
+                          >
                         </td>
                         <td>
+                          <i id="comment-description_of_the_prequesities"></i>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <b id="title-language_of_lessons"></b>
+                        </td>
+                        <td>
+                          <i id="format-language_of_lessons"></i>                
+                        </td>
+                        <td>
+                          <select class="custom-input-edit" name="language_of_lessons" style="background: white">
+                            <option value="Polski" @if($sylabusSuplementary->language_of_lessons == "Polski") selected @endif>Polski</option>
+                            <option value="Angielski" @if($sylabusSuplementary->language_of_lessons == "Angielski") selected @endif>Angielski</option>
+                          </select>
+                        </td>
+                        <td>
+                          <i id="comment-language_of_lessons"></i>
 
                         </td>
                       </tr>
 
                       <tr>
                         <td>
-                          <b>Język wykładów</b>
-
+                          <b id="title-list_of_primary_literature_to_the_subject"></b>
                         </td>
                         <td>
-
-                        </td>
-                        <td>
-                          <input 
-                          class="custom-input-edit" 
-                          type="text" 
-                          name="language_of_lessons" 
-                          value="{{ $sylabusSuplementary->language_of_lessons }}" 
-                          required>
-                        </td>
-                        <td>
-
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td>
-                          <b>Lista podstawowej literatury do przedmiotu</b>
-                        </td>
-                        <td>
-
+                          <i id="format-list_of_primary_literature_to_the_subject"></i>                
                         </td>
                         <td>
                           <textarea 
                           class="custom-input-edit" 
                           style="height:100px;" 
                           name="list_of_primary_literature_to_the_subject" 
-                          required>{{ $sylabusSuplementary->list_of_primary_literature_to_the_subject }}</textarea>
+                          >{{ $sylabusSuplementary->list_of_primary_literature_to_the_subject }}</textarea>
                         </td>
                         <td>
+                          <i id="comment-list_of_primary_literature_to_the_subject"></i>
 
                         </td>
                       </tr>
 
                       <tr>
                         <td>
-                          <b>Lista uzupełniającej literatury do przedmiotu</b>
+                          <b id="title-list_of_suplementary_literature_to_the_subject"></b>
                         </td>
                         <td>
-
+                          <i id="format-list_of_suplementary_literature_to_the_subject"></i>                
                         </td>
                         <td>
                           <textarea 
                             class="custom-input-edit" 
                             style="height:100px;" 
                             name="list_of_suplementary_literature_to_the_subject" 
-                            required>{{ $sylabusSuplementary->list_of_suplementary_literature_to_the_subject }}</textarea>
+                            >{{ $sylabusSuplementary->list_of_suplementary_literature_to_the_subject }}</textarea>
                         </td>
                         <td>
+                          <i id="comment-list_of_suplementary_literature_to_the_subject"></i>
 
                         </td>
                       </tr>
 
                       <tr>
                         <td>
-                          <b>Kompetencje prowadzącego przedmiot</b>
+                          <b id="title-lecturers_competence_to_teach_the_subject"></b>
                         </td>
                         <td>
-
+                          <i id="format-lecturers_competence_to_teach_the_subject"></i>                
                         </td>
                         <td>
                           <input 
                             class="custom-input-edit" 
                             type="text" 
                             name="lecturers_competence_to_teach_the_subject" 
-                            value="{{ $sylabusSuplementary->lecturers_competence_to_teach_the_subject }}" 
-                            required>
+                            value="{{ $sylabusSuplementary->lecturers_competence_to_teach_the_subject }}">
                         </td>
                         <td>
+                          <i id="comment-lecturers_competence_to_teach_the_subject"></i>
 
                         </td>
                       </tr>
@@ -371,6 +376,16 @@
           'number_of_hours_online_classes',
           'number_of_hours_own_work',
           'study_profile',
+          'other_way_of_teaching',
+          'form_of_assessment',
+          'participation_of_ects_for_number_of_hours_lecturer',
+          'participation_of_ects_for_number_of_hours_online',
+          'participation_of_ects_for_number_of_hours_own_work',
+          'description_of_the_prequesities',
+          'language_of_lessons',
+          'list_of_primary_literature_to_the_subject',
+          'list_of_suplementary_literature_to_the_subject',
+          'lecturers_competence_to_teach_the_subject',
       ];
 
       let polish_titles = [
@@ -400,14 +415,24 @@
         'Liczba godzin zajęć online',
         'Liczba godzin własnej pracy',
         'Profil studiów',
+        'Inne formy nauczania',
+        'Forma zaliczenia',
+        'Udział ECTS za liczbę godzin z wykładowcą',
+        'Udział ECTS za liczbę godzin online',
+        'Udział ECTS za liczbę godzin pracy własnej',
+        'Opis warunków wstępnych',
+        'Język wykładów',
+        'Lista podstawowej literatury do przedmiotu',
+        'Lista uzupełniającej literatury do przedmiotu ',
+        'Kompetencje prowadzącego przedmiot ',
       ];
       
       let polish_comments = [
-        'Kod przedmiotu',
-        'Nazwa przedmiotu',
+        'Wewnętrzny identyfikator przedmiotu',
+        'Pełna, oficjalna nazwa przedmiotu',
         'Typ studiów',
-        'Specjalność',
-        'Stopień',
+        'Po zaliczeniu przedmiotu należy wybrać jaką specjalzacje moze uzyskać student',
+        'Stopnie: Iżynierskie lub magisterskie',
         'Semestr',
         'ID katedry',
         'Wymagany',
@@ -429,6 +454,16 @@
         'Liczba godzin zajęć online',
         'Liczba godzin własnej pracy',
         'Profil studiów',
+        ' 	Należy opisać inne formy prowadznia zajęć, w przypadku gdy występują wpólnie ze wskazanymi w rodzaju ćwiczeń. Oprócz podania dodatkowej formy prowadzenia zajęć, należy podać liczbę godzin przeznaczonych na tę formę, np. ćwiczenia terenowe (5 godz.)',
+        '',
+        '',
+        '',
+        '',
+        '',
+        'Polski lub angielski',
+        'Spis literatury podstawowej do przedmiotu. W przypadku przedmiotów podstawowych i kierunkowych proszę również wskazać wymagany podręcznik lub podręczniki zawierające potrzebne treści.',
+        'Spis literatury uzupełniającej do przedmiotu',
+        'Należy wpisać publikacje tematycznie związane z prowadzonym przedmiotem, ukończone studia podyplomowe, doświadczenie zawodowe, wykonane zbiory dokumentacji, ekspertyzy, operaty techniczne, itp. ',
       ];
 
       let polish_formats = [
@@ -458,6 +493,16 @@
         'liczba',
         'liczba',
         'tekst (100 zn.)',
+        'tekst (200 zn.)',
+        'tekst (100 zn.)',
+        'liczba',
+        'liczba',
+        'liczba',
+        'tekst (200 zn.)',
+        'tekst (100 zn.)',
+        'tekst (2000 zn.)',
+        'tekst (2000 zn.)',
+        'tekst (1000 zn.)',
       ];
 
     for (let i = 0; i < original_id_of_inputs.length; i++) {

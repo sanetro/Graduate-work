@@ -106,3 +106,42 @@ VALUES
     ('Online lectures', 'Final exam', 0.5, 0.3, 0.2, 'None', 'English', 'Book A, Book B', 'Additional Book X, Additional Book Y', 'Highly qualified', 1, 2);
 
 INSERT INTO user_to_sylabus (sylabus_id, user_id) VALUES (1, 1), (1, 2), (1, 3), (2, 4);  
+
+
+
+INSERT INTO sylabus_initialized (
+    code_subject,
+    name_subject,
+    type_study,
+    speciality,
+    degree,
+    semester,
+    chair_id,
+    required,
+    calculator_for_subjects_to_order,
+    status_subject,
+    ects_summary,
+    total_number_of_hours,
+    lectures_number_of_hours,
+    seminars_number_of_hours,
+    exercise_number_of_hours,
+    type_of_exercice,
+    direction_name,
+    subject_content_id,
+    number_of_hours_with_lecturer,
+    number_of_hours_of_consultation,
+    number_of_hours_participation_in_research,
+    number_of_hours_mandatory_practices_and_internships,
+    number_of_hours_participations_in_the_exam_and_credits,
+    number_of_hours_online_classes,
+    number_of_hours_own_work,
+    study_profile
+)
+VALUES
+    ('DRRRRRR', 'Test null 1', 'Full-Time', 'Computer Science', 'B.Sc.', 'Spring 2023', 1, 'Yes', 5.5, 'Active', 5, 120, 60, 30, 30, 'Lecture', 'Computer Science Department', 1, 40, 10, 20, 30, 20, 10, 20, 'General'),
+ 
+
+INSERT INTO sylabus_suplementary (other_way_of_teaching, form_of_assessment, participation_of_ects_for_number_of_hours_lecturer, participation_of_ects_for_number_of_hours_online, participation_of_ects_for_number_of_hours_own_work, description_of_the_prequesities, language_of_lessons, list_of_primary_literature_to_the_subject, list_of_suplementary_literature_to_the_subject, lecturers_competence_to_teach_the_subject, directional_effects_id, subject_effects_id)
+VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+
+INSERT INTO user_to_sylabus (sylabus_id, user_id) VALUES (11, 1),
