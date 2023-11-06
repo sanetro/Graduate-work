@@ -381,3 +381,13 @@ h2 {
 .pad {
     margin-left: 35px;
 }
+
+textarea {
+    resize: both;
+    width: 100%;
+}
+
+.form-input-fill {
+    width: 100%;
+    height: 40px;
+}

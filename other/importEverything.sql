@@ -138,10 +138,10 @@ INSERT INTO sylabus_initialized (
     study_profile
 )
 VALUES
-    ('DRRRRRR', 'Test null 1', 'Full-Time', 'Computer Science', 'B.Sc.', 'Spring 2023', 1, 'Yes', 5.5, 'Active', 5, 120, 60, 30, 30, 'Lecture', 'Computer Science Department', 1, 40, 10, 20, 30, 20, 10, 20, 'General'),
+    ('DRRRRRR', 'Test null 1', 'Full-Time', 'Computer Science', 'B.Sc.', 'Spring 2023', 1, 'Yes', 5.5, 'Active', 5, 120, 60, 30, 30, 'Lecture', 'Computer Science Department', 1, 40, 10, 20, 30, 20, 10, 20, 'General');
  
 
 INSERT INTO sylabus_suplementary (other_way_of_teaching, form_of_assessment, participation_of_ects_for_number_of_hours_lecturer, participation_of_ects_for_number_of_hours_online, participation_of_ects_for_number_of_hours_own_work, description_of_the_prequesities, language_of_lessons, list_of_primary_literature_to_the_subject, list_of_suplementary_literature_to_the_subject, lecturers_competence_to_teach_the_subject, directional_effects_id, subject_effects_id)
-VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
-INSERT INTO user_to_sylabus (sylabus_id, user_id) VALUES (11, 1),
+INSERT INTO user_to_sylabus (sylabus_id, user_id) VALUES (11, 1);

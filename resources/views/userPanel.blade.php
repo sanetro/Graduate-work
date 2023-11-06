@@ -83,9 +83,9 @@
                                     <td>Specjalizacja</td>
                                     <td>Stopień Studiów</td>
                                     <td>Semestr</td>
-                                    <td>SZG</td>
-                                    <td>TRP</td>
-                                    <td>EFP</td>
+                                    <td>Sczegóły</td>
+                                    <td>Treści</td>
+                                    <td>Efekty</td>
                                     <td>Sylabus</td>
                                     <td>Uwagi</td>
                                 </tr>
@@ -102,12 +102,20 @@
                                         <td>{{ $s->chair_id }}</td>
 
                                         <td>
-                                            <a href="/{{$s->code_subject}}/{{$s->id}}?flag=None">
+                                            <a href="edit/{{$s->code_subject}}/{{$s->id}}?flag=None">
                                                 <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Edytuj przedmiot">
                                             </a>
                                         </td>
-                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
-                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
+                                        <td>
+                                            <a href="content/{{$s->code_subject}}/{{$s->id}}?flag=None">
+                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Treści przedmiotu">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="effect/{{$s->code_subject}}/{{$s->id}}?flag=None">
+                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Efekty przedmiot">
+                                            </a>
+                                        </td>
                                         <td>Sylabus</td>
                                         <td>Uwagi</td>
                                     </tr>                                

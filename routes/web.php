@@ -46,5 +46,9 @@ Route::post('/panel/searchSylabuses',
 [ActionController::class, 'searchSylabuses'])->name('searchSylabuses');
 
 
-Route::match(['get', 'post'], '/{code}/{id}', [SylabusController::class, 'read'])->name('read');
-Route::match(['get', 'post'], '/{code}/{id}/change', [SylabusController::class, 'change'])->name('change');
+Route::match(['get', 'post'], 'edit/{code}/{id}', [SylabusController::class, 'read'])->name('read');
+Route::match(['get', 'post'], 'edit/{code}/{id}/change', [SylabusController::class, 'change'])->name('change');
+
+Route::match(['get', 'post'], 'content/{code}/{id}', [SylabusController::class, 'readContent'])->name('readContent');
+Route::get( 'content/add/{code}/{id}', [SylabusController::class, 'addContent'])->name('addContent');
+Route::get( 'content/make/{code}/{id}', [SylabusController::class, 'makeContent'])->name('makeContent');

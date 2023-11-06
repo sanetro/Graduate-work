@@ -65,4 +65,54 @@ class SylabusController extends Controller
 
         
     }
+
+    public function readContent(Request $r) {
+        if (session()->has('user') == null)
+            return redirect()->route('welcome');
+    
+        // if user exitst in DB go to userPanel with collection: email, role, department
+        if (session()->get('user')) 
+        {   
+            $initialized = Sylabus_initialized::find($r->id);
+            $suplementary = Sylabus_suplementary::find($r->id);
+           
+            return view("content-sylabus", [
+                'email' =>              session()->get('user')['email'],
+                'role' =>               session()->get('user')['role'],
+                'department' =>         session()->get('user')['department'],
+                'sylabus' =>            $initialized,
+                'sylabusSuplementary' =>$suplementary,
+                'code' =>               $r->code,
+                'id' =>                 $r->id,
+                'chair_name' =>         $initialized->chair->name
+            ]);
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    public function addContent(Request $r) {
+        if (session()->has('user') == null)
+            return redirect()->route('welcome');
+    
+        // if user exitst in DB go to userPanel with collection: email, role, department
+        if (session()->get('user')) 
+        {   
+            $initialized = Sylabus_initialized::find($r->id);
+            $suplementary = Sylabus_suplementary::find($r->id);
+           
+            return view("add-content-sylabus", [
+                'email' =>              session()->get('user')['email'],
+                'role' =>               session()->get('user')['role'],
+                'department' =>         session()->get('user')['department'],
+                'sylabus' =>            $initialized,
+                'sylabusSuplementary' =>$suplementary,
+                'code' =>               $r->code,
+                'id' =>                 $r->id,
+                'chair_name' =>         $initialized->chair->name
+            ]);
+        } else {
+            return redirect()->back();
+        }
+    }
 }
