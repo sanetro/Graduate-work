@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\SylabusController;
+use App\Http\Controllers\ContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,6 @@ Route::post('/panel/searchSylabuses',
 Route::match(['get', 'post'], 'edit/{code}/{id}', [SylabusController::class, 'read'])->name('read');
 Route::match(['get', 'post'], 'edit/{code}/{id}/change', [SylabusController::class, 'change'])->name('change');
 
-Route::match(['get', 'post'], 'content/{code}/{id}', [SylabusController::class, 'readContent'])->name('readContent');
-Route::get( 'content/add/{code}/{id}', [SylabusController::class, 'addContent'])->name('addContent');
-Route::get( 'content/make/{code}/{id}', [SylabusController::class, 'makeContent'])->name('makeContent');
+Route::match(['get', 'post'], 'content/{code}/{id}', [ContentController::class, 'read'])->name('readContent');
+Route::get( 'content/add/{code}/{id}', [ContentController::class, 'add'])->name('addContent');
+Route::get( 'content/make/{code}/{id}', [ContentController::class, 'make'])->name('makeContent');

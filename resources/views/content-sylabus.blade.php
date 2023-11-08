@@ -66,12 +66,45 @@
                       Nie odnotowano żadnych zmian
                   </p>
               @endif
+            
               
-              <a href="{{ route("addContent", ['code'=> $code, 'id' => $id]) }}">
-                <button class="custom-button-account" style="width: fit-content">
-                    Stwórz i dodaj treść przedmiotu
-                </button>
-            </a>
+               <div class="content-container">
+               <p id="list-of-subjects-p" class="header-of-container">Lista wszystkich przedmiotów</p>
+
+                    <a href="{{ route("addContent", ['code'=> $code, 'id' => $id]) }}">
+                        <button class="custom-button-account" style="width: fit-content">
+                            Stwórz i dodaj treść przedmiotu
+                        </button>
+                    </a>
+               </div>
+                        
+              <table class="subject-list-table">
+                  <thead>
+                      <tr>
+                          <td>Typ</td>
+                          <td>Treść</td>
+                          <td>Liczba godzin</td>
+                          <td>Słowa kluczowe</td>
+                          <td>Stopień zaawansowania</td>
+                          <td>Zmień</td>
+                          <td>Usuń</td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @forelse ($contents as $c)
+                          <tr>
+                              <td>{{ $c }}</td>
+                          </tr>                                
+                      @empty
+                          <p class="warnning">
+                              Rekord jest pusty
+                              <img src="{{ asset('images/open-on-new-page.png') }}" class="link-open-in-new-page">
+                          </p>
+                      @endforelse
+                  </tbody> 
+              </table>
+              
+            
                 
           </div>        
     </body>

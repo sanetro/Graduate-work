@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Sylabus_initialized;
 use App\Models\Sylabus_suplementary;
+use App\Models\SylabusToContent;
 use Illuminate\Http\Request;
 
 
 
 class SylabusController extends Controller
 {
-    public function read(Request $r) {
+    public function sylabus_to_contentread(Request $r) {
         if (session()->has('user') == null)
             return redirect()->route('welcome');
     
@@ -73,18 +74,15 @@ class SylabusController extends Controller
         // if user exitst in DB go to userPanel with collection: email, role, department
         if (session()->get('user')) 
         {   
-            $initialized = Sylabus_initialized::find($r->id);
-            $suplementary = Sylabus_suplementary::find($r->id);
+            $contents = SylabusToContent::all();
            
             return view("content-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
                 'department' =>         session()->get('user')['department'],
-                'sylabus' =>            $initialized,
-                'sylabusSuplementary' =>$suplementary,
+                'contents'=>            $contents,
                 'code' =>               $r->code,
                 'id' =>                 $r->id,
-                'chair_name' =>         $initialized->chair->name
             ]);
         } else {
             return redirect()->back();
@@ -98,15 +96,14 @@ class SylabusController extends Controller
         // if user exitst in DB go to userPanel with collection: email, role, department
         if (session()->get('user')) 
         {   
-            $initialized = Sylabus_initialized::find($r->id);
-            $suplementary = Sylabus_suplementary::find($r->id);
+            $contents = SylabusToContent::all();
+            dd($contents);
            
             return view("add-content-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
                 'department' =>         session()->get('user')['department'],
-                'sylabus' =>            $initialized,
-                'sylabusSuplementary' =>$suplementary,
+                'contents'=>            $contents,
                 'code' =>               $r->code,
                 'id' =>                 $r->id,
                 'chair_name' =>         $initialized->chair->name
