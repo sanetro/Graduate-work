@@ -15,7 +15,6 @@ class SylabusController extends Controller
         if (session()->has('user') == null)
             return redirect()->route('welcome');
     
-        // if user exitst in DB go to userPanel with collection: email, role, department
         if (session()->get('user')) 
         {   
             $initialized = Sylabus_initialized::find($r->id);

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('type_of_content', 100); 
             $table->string('content_description', 2000); 
             $table->string('tags', 50);
-            $table->string('dificulty_level', 50); 
+            $table->string('difficulty_level', 50); 
             $table->string('method_of_veryfication_for_evaluation_of_lecturer', 2000); 
             $table->string('method_of_veryfication_for_evaluation_of_exercise', 2000); 
             $table->string('method_of_veryfication_for_evaluation_of_seminars', 2000);

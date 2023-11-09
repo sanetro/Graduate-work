@@ -52,4 +52,7 @@ Route::match(['get', 'post'], 'edit/{code}/{id}/change', [SylabusController::cla
 
 Route::match(['get', 'post'], 'content/{code}/{id}', [ContentController::class, 'read'])->name('readContent');
 Route::get( 'content/add/{code}/{id}', [ContentController::class, 'add'])->name('addContent');
-Route::get( 'content/make/{code}/{id}', [ContentController::class, 'make'])->name('makeContent');
+Route::get( 'content/edit', [ContentController::class, 'edit'])->name('editContent');
+Route::post( 'content/update', [ContentController::class, 'update'])->name('updateContent');
+Route::post( 'content/create/{code}/{id}', [ContentController::class, 'create'])->name('createContent');
+Route::get( 'content/destroy', [ContentController::class, 'destroy'])->name('destroyContent');

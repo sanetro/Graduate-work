@@ -81,11 +81,14 @@
               <table class="subject-list-table">
                   <thead>
                       <tr>
-                          <td>Typ</td>
-                          <td>Treść</td>
-                          <td>Liczba godzin</td>
-                          <td>Słowa kluczowe</td>
-                          <td>Stopień zaawansowania</td>
+                          <td>id</td>
+                          <td>type_of_content</td>
+                          <td>content_description</td>
+                          <td>tags</td>
+                          <td>difficulty_level</td>
+                          <td>... wykładowcą</td>
+                          <td>... ćwiczenia</td>
+                          <td>... seminaria</td>
                           <td>Zmień</td>
                           <td>Usuń</td>
                       </tr>
@@ -93,7 +96,24 @@
                   <tbody>
                       @forelse ($contents as $c)
                           <tr>
-                              <td>{{ $c }}</td>
+                              <td>{{ $c->id }}</td>
+                              <td>{{ $c->type_of_content }}</td>
+                              <td>{{ $c->content_description }}</td>
+                              <td>{{ $c->tags }}</td>
+                              <td>{{ $c->difficulty_level }}</td>
+                              <td>{{ $c->method_of_veryfication_for_evaluation_of_lecturer }}</td>
+                              <td>{{ $c->method_of_veryfication_for_evaluation_of_exercise }}</td>
+                              <td>{{ $c->method_of_veryfication_for_evaluation_of_seminars }}</td>
+                              <td>
+                                <a href="{{ route('editContent', ['id' => $c->id]); }}">
+                                    <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page">
+                                </a>
+                              </td>
+                              <td>
+                                <a href="{{ route('destroyContent', ['id' => $c->id]); }}">
+                                    <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page">
+                                </a>
+                              </td>
                           </tr>                                
                       @empty
                           <p class="warnning">

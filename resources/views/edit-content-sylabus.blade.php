@@ -58,38 +58,38 @@
             <div class="layout-panel-start">
                   
               <div style="margin:5% auto; width: 900px;">
-              <h2>Dodaj nową treść przedmiotu</h2>
+              <h2>Zmodyfikuj treść przedmiotu</h2>
               <br>
-              <form class="edit-form" method="post" action="{{ route('createContent', ['code' => $code, 'id' => $id]) }}">
+              <form class="edit-form" method="post" action="{{ route('updateContent', ['id' => $id]) }}">
                   @csrf 
                   <table>
                       <tr>
                           <td><label for="type_of_content">Rodzaj treść:</label></td>
-                          <td style="width: 80%"><input type="text" name="type_of_content" id="type_of_content" class="form-input-fill" required></td>
+                          <td style="width: 80%"><input type="text" name="type_of_content" id="type_of_content" class="form-input-fill" required value="{{$contents->type_of_content}}"></td>
                       </tr>
                       <tr>
                           <td><label for="content_description">Opis:</label></td>
-                          <td><textarea name="content_description" id="content_description"  rows="4" required></textarea></td>
+                          <td><textarea name="content_description" id="content_description"  rows="4" required>{{$contents->content_description}}</textarea></td>
                       </tr>
                       <tr>
                           <td><label for="tags">Tagi:</label></td>
-                          <td><input type="text" name="tags" id="tags" class="form-input-fill"></td>
+                          <td><input type="text" name="tags" id="tags" class="form-input-fill" value="{{$contents->tags}}"></td>
                       </tr>
                       <tr>
                           <td><label for="difficulty_level">Poziom trudności:</label></td>
-                          <td><input type="text" name="difficulty_level" id="difficulty_level" class="form-input-fill" required></td>
+                          <td><input type="text" name="difficulty_level" id="difficulty_level" class="form-input-fill" required value="{{$contents->difficulty_level}}"></td>
                       </tr>
                       <tr>
                           <td><label for="method_of_veryfication_for_evaluation_of_lecturer">Metoda weryfikacji (wykładowca):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_lecturer" id="verification_lecturer" rows="4" required></textarea></td>
+                          <td><textarea name="method_of_veryfication_for_evaluation_of_lecturer" id="verification_lecturer" rows="4" required>{{$contents->method_of_veryfication_for_evaluation_of_lecturer}}</textarea></td>
                       </tr>
                       <tr>
                           <td><label for="method_of_veryfication_for_evaluation_of_exercise">Metoda weryfikacji (ćwiczenia):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_exercise" id="verification_exercise"  rows="4" required></textarea></td>
+                          <td><textarea name="method_of_veryfication_for_evaluation_of_exercise" id="verification_exercise"  rows="4" required>{{$contents->method_of_veryfication_for_evaluation_of_exercise}}</textarea></td>
                       </tr>
                       <tr>
                           <td><label for="method_of_veryfication_for_evaluation_of_seminars">Metoda weryfikacji (seminaria):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_seminars" id="verification_seminars" rows="4" required></textarea></td>
+                          <td><textarea name="method_of_veryfication_for_evaluation_of_seminars" id="verification_seminars" rows="4" required>{{$contents->method_of_veryfication_for_evaluation_of_seminars}}</textarea></td>
                       </tr>
                       <tr>
                         <td></td>
