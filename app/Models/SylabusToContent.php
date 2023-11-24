@@ -11,15 +11,17 @@ class SylabusToContent extends Model
     use HasFactory;
 
     protected $table = "sylabus_to_subject_contents";
+    public $timestamps = false;
+    
     
     protected $fillable = [
         'sylabus_id',
-        'content_id'
+        'subject_contents_id'
     ];
 
     public function contents() : BelongsTo
     {
-        return $this->belongsTo(User::class, 'content_id', 'id');    
+        return $this->belongsTo(SubjectContents::class, 'subject_contents_id', 'id');    
     }
 
     public function sylabuses() : BelongsTo

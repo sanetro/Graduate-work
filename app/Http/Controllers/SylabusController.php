@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class SylabusController extends Controller
 {
-    public function sylabus_to_contentread(Request $r) {
+    public function read(Request $r) {
         if (session()->has('user') == null)
             return redirect()->route('welcome');
     

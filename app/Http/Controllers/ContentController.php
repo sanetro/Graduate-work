@@ -10,15 +10,17 @@ use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-
+    
     public function read(Request $r) {
         if (session()->has('user') == null)
             return redirect()->route('welcome');
     
-        if (session()->get('user')) 
-        {   
-            $contents = SubjectContent::all();
-           
+        if (session()->get('user')) {   
+            $groupBelongsToSubject = SylabusToContent::where('sylabus_id', $r->id)
+                ->pluck('subject_contents_id')
+                ->toArray();
+            $contents = SubjectContent::whereIn('id', $groupBelongsToSubject)->get();
+            
             return view("content-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
@@ -66,6 +68,18 @@ class ContentController extends Controller
 
         $content = new SubjectContent($data);
         $content->save();
+
+        // Go to the next page and combine two id's in link table
+        return redirect()->route('spanContent', ['id' => $r->id, 'code' => $r->code, 'subject_contents_id' => $content->id]);
+    }
+
+    public function span(Request $r) {
+        $lastRecordId = SubjectContent::orderBy('id', 'desc')->first()->id;
+        $content = new SylabusToContent();
+        $content->sylabus_id = $r->id;
+        $content->subject_contents_id = $r->subject_contents_id;
+        $content->save();
+
         return redirect()->route('readContent', ['id' => $r->id, 'code' => $r->code, 'flag'=>0]);
     }
 
@@ -106,8 +120,6 @@ class ContentController extends Controller
         
             // Transfer with successful flag
             return redirect()->route('readContent', ['id' => $r->id, 'code' => 'code', 'flag'=>0]);
-        
-        
     }
 
     

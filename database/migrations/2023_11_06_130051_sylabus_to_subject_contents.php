@@ -9,7 +9,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sylabus_to_subject_contents', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedBigInteger('sylabus_id')->foreignId('sylabus_id')->references('id')->on('sylabus_initialized');
             $table->unsignedBigInteger('subject_contents_id')->foreignId('subject_contents_id')->references('id')->on('subject_contents');
         });
