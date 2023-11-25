@@ -69,26 +69,25 @@
             
               
                <div class="content-container">
-               <p id="list-of-subjects-p" class="header-of-container">Lista wszystkich przedmiotów</p>
+               <h2 id="list-of-subjects-p" style="margin-top: 20px">Lista wszystkich treści do <i>{{ $code }}</i>
 
                     <a href="{{ route("addContent", ['code'=> $code, 'id' => $id]) }}">
-                        <button class="custom-button-account" style="width: fit-content">
-                            Stwórz i dodaj treść przedmiotu
+                        <button class="custom-button-account" style="width: fit-content; float: right; font-size: 16px" >
+                            Stwórz i dodaj nową treść przedmiotu
                         </button>
                     </a>
+                </h2>
                </div>
                         
-              <table class="subject-list-table">
+              <table class="subject-list-table" style="width: 70%; margin: 24px auto">
                   <thead>
                       <tr>
                           <td>id</td>
-                          <td>type_of_content</td>
-                          <td>content_description</td>
-                          <td>tags</td>
-                          <td>difficulty_level</td>
-                          <td>... wykładowcą</td>
-                          <td>... ćwiczenia</td>
-                          <td>... seminaria</td>
+                          <td>Typ treści</td>
+                          <td>Opis</td>
+                          <td>Symbole</td>
+                          <td>Poziom trudności</td>
+                          <td>Więcej</td>
                           <td>Zmień</td>
                           <td>Usuń</td>
                       </tr>
@@ -101,9 +100,11 @@
                               <td>{{ $c->content_description }}</td>
                               <td>{{ $c->tags }}</td>
                               <td>{{ $c->difficulty_level }}</td>
-                              <td>{{ $c->method_of_veryfication_for_evaluation_of_lecturer }}</td>
-                              <td>{{ $c->method_of_veryfication_for_evaluation_of_exercise }}</td>
-                              <td>{{ $c->method_of_veryfication_for_evaluation_of_seminars }}</td>
+                              <td>
+                                <a href="{{ route('detailedContent', ['id' => $c->id]); }}">
+                                    <img src={{ asset('images/see.png') }} class="link-open-in-new-page">
+                                </a>
+                              </td>
                               <td>
                                 <a href="{{ route('editContent', ['id' => $c->id]); }}">
                                     <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page">
@@ -111,15 +112,14 @@
                               </td>
                               <td>
                                 <a href="{{ route('destroyContent', ['id' => $c->id]); }}">
-                                    <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page">
+                                    <img src={{ asset('images/delete.png') }} class="link-open-in-new-page">
                                 </a>
                               </td>
                           </tr>                                
                       @empty
-                          <p class="warnning">
-                              Rekord jest pusty
-                              <img src="{{ asset('images/open-on-new-page.png') }}" class="link-open-in-new-page">
-                          </p>
+                        <p class="alert">
+                            Brak danych. Dodaj treść przedmiotu.
+                        </p>    
                       @endforelse
                   </tbody> 
               </table>

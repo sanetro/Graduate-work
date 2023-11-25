@@ -54,8 +54,7 @@ class ContentController extends Controller
         }
     }
 
-    public function create(Request $r) {
-                
+    public function create(Request $r) {      
         $data = $r->validate([
             'type_of_content' => 'required',
             'content_description' => 'required',
@@ -65,10 +64,8 @@ class ContentController extends Controller
             'method_of_veryfication_for_evaluation_of_exercise' => 'required',
             'method_of_veryfication_for_evaluation_of_seminars' => 'required',
         ]);
-
         $content = new SubjectContent($data);
         $content->save();
-
         // Go to the next page and combine two id's in link table
         return redirect()->route('spanContent', ['id' => $r->id, 'code' => $r->code, 'subject_contents_id' => $content->id]);
     }
@@ -79,7 +76,6 @@ class ContentController extends Controller
         $content->sylabus_id = $r->id;
         $content->subject_contents_id = $r->subject_contents_id;
         $content->save();
-
         return redirect()->route('readContent', ['id' => $r->id, 'code' => $r->code, 'flag'=>0]);
     }
 
@@ -92,6 +88,26 @@ class ContentController extends Controller
         {   
             $contents = SubjectContent::find($r->id);
             return view("edit-content-sylabus", [
+                'email' =>              session()->get('user')['email'],
+                'role' =>               session()->get('user')['role'],
+                'department' =>         session()->get('user')['department'],
+                'contents'=>            $contents,
+                'id' =>                 $r->id,
+            ]);
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    public function detailed(Request $r) {
+                
+        if (session()->has('user') == null)
+            return redirect()->route('welcome');
+    
+        if (session()->get('user')) 
+        {   
+            $contents = SubjectContent::find($r->id);
+            return view("detailed-content-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
                 'department' =>         session()->get('user')['department'],
@@ -123,10 +139,8 @@ class ContentController extends Controller
     }
 
     
-    public function destroy(Request $r)
-    {
+    public function destroy(Request $r) {
         $content = SubjectContent::find($r->id);
-
         if ($content) {
             $content->delete();
             return redirect()->back();

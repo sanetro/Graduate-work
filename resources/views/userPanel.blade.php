@@ -117,7 +117,11 @@
                                             </a>
                                         </td>
                                         <td>Sylabus</td>
-                                        <td>Uwagi</td>
+                                        <td>
+                                            <a href="effect/{{$s->code_subject}}/{{$s->id}}?flag=None">
+                                                <img src={{ asset('images/raport-correct.png') }} class="link-open-in-new-page" alt="Efekty przedmiot">
+                                            </a>
+                                        </td>
                                     </tr>                                
                                 @empty
                                     <p class="warnning">
