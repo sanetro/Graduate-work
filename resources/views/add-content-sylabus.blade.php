@@ -65,31 +65,31 @@
                   <table>
                       <tr>
                           <td><label for="type_of_content">Rodzaj treść:</label></td>
-                          <td style="width: 80%"><input type="text" name="type_of_content" id="type_of_content" class="form-input-fill" required></td>
+                          <td style="width: 80%"><input type="text" name="type_of_content" id="type_of_content" class="form-input-fill" maxlength="100" required></td>
                       </tr>
                       <tr>
                           <td><label for="content_description">Opis:</label></td>
-                          <td><textarea name="content_description" id="content_description"  rows="4" required></textarea></td>
+                          <td><textarea name="content_description" id="content_description"  rows="4" maxlength="2000" required></textarea></td>
                       </tr>
                       <tr>
                           <td><label for="tags">Tagi:</label></td>
-                          <td><input type="text" name="tags" id="tags" class="form-input-fill"></td>
+                          <td><input type="text" name="tags" id="tags" class="form-input-fill" maxlength="50"></td>
                       </tr>
                       <tr>
                           <td><label for="difficulty_level">Poziom trudności:</label></td>
-                          <td><input type="text" name="difficulty_level" id="difficulty_level" class="form-input-fill" required></td>
+                          <td><input type="text" name="difficulty_level" id="difficulty_level" class="form-input-fill" maxlength="50" required></td>
                       </tr>
                       <tr>
                           <td><label for="method_of_veryfication_for_evaluation_of_lecturer">Metoda weryfikacji (wykładowca):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_lecturer" id="verification_lecturer" rows="4" required></textarea></td>
+                          <td><textarea name="method_of_veryfication_for_evaluation_of_lecturer" id="verification_lecturer" rows="4" maxlength="2000" required></textarea></td>
                       </tr>
                       <tr>
                           <td><label for="method_of_veryfication_for_evaluation_of_exercise">Metoda weryfikacji (ćwiczenia):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_exercise" id="verification_exercise"  rows="4" required></textarea></td>
+                          <td><textarea name="method_of_veryfication_for_evaluation_of_exercise" id="verification_exercise"  rows="4" maxlength="2000" required></textarea></td>
                       </tr>
                       <tr>
                           <td><label for="method_of_veryfication_for_evaluation_of_seminars">Metoda weryfikacji (seminaria):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_seminars" id="verification_seminars" rows="4" required></textarea></td>
+                          <td><textarea name="method_of_veryfication_for_evaluation_of_seminars" id="verification_seminars" rows="4" maxlength="2000" required></textarea></td>
                       </tr>
                       <tr>
                         <td></td>

@@ -227,8 +227,10 @@ body {
     width: 32px;
     height: 32px;
 }
+
 .img-info-question-mark {
-    display: inline-block; vertical-align: bottom;
+    display: inline-block; 
+    vertical-align: bottom;
 }
 .img-info-question-mark:hover{
     cursor: pointer;

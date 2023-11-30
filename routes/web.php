@@ -52,9 +52,9 @@ Route::match(['get', 'post'], 'edit/{code}/{id}/change', [SylabusController::cla
 
 Route::match(['get', 'post'], 'content/{code}/{id}', [ContentController::class, 'read'])->name('readContent');
 Route::get( 'content/add/{code}/{id}', [ContentController::class, 'add'])->name('addContent');
-Route::get( 'content/edit', [ContentController::class, 'edit'])->name('editContent');
+Route::get( 'content/edit/{code}/{id}', [ContentController::class, 'edit'])->name('editContent');
 Route::get( 'content/detailed', [ContentController::class, 'detailed'])->name('detailedContent');
-Route::post( 'content/update', [ContentController::class, 'update'])->name('updateContent');
 Route::get( 'content/span', [ContentController::class, 'span'])->name('spanContent');
 Route::post( 'content/create/{code}/{id}', [ContentController::class, 'create'])->name('createContent');
 Route::get( 'content/destroy', [ContentController::class, 'destroy'])->name('destroyContent');
+Route::post( 'content/update/{code}/{id}', [ContentController::class, 'update'])->name('updateContent');

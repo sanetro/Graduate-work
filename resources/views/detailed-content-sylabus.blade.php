@@ -57,46 +57,39 @@
 
             <div class="layout-panel-start">
                   
-              <div style="margin:5% auto; width: 900px;">
+              <div style="margin:5% auto; width:1200px">
               <h2>Pełna treść przedmiotu</h2>
               <br>
-              <form class="edit-form" method="post" action="{{ route('updateContent', ['id' => $id]) }}">
-                  @csrf 
                   <table>
                       <tr style="border-bottom: 1px;">
-                          <td><label for="type_of_content">Rodzaj treść:</label></td>
+                          <td><label for="type_of_content"><b>Rodzaj treść:</b></label></td>
                           <td>{{$contents->type_of_content}}</td>
                       </tr>
                       <tr>
-                          <td><label for="content_description">Opis:</label></td>
-                          <td>{{$contents->content_description}}</td>
+                          <td><label for="content_description"><b>Opis:</b></label></td>
+                          <td><textarea>{{$contents->content_description}}</textarea></td>
                       </tr>
                       <tr>
-                          <td><label for="tags">Tagi:</label></td>
+                          <td><label for="tags"><b>Tagi:</b></label></td>
                           <td>{{$contents->tags}}</td>
                       </tr>
                       <tr>
-                          <td><label for="difficulty_level">Poziom trudności:</label></td>
+                          <td><label for="difficulty_level"><b>Poziom trudności:</b></label></td>
                           <td>{{$contents->difficulty_level}}</td>
                       </tr>
                       <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_lecturer">Metoda weryfikacji (wykładowca):</label></td>
-                          <td>{{$contents->method_of_veryfication_for_evaluation_of_lecturer}}</td>
+                          <td><label for="method_of_veryfication_for_evaluation_of_lecturer"><b>Metoda weryfikacji (wykładowca):</b></label></td>
+                          <td><textarea>{{$contents->method_of_veryfication_for_evaluation_of_lecturer}}</textarea></td>
                       </tr>
                       <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_exercise">Metoda weryfikacji (ćwiczenia):</label></td>
-                          <td>{{$contents->method_of_veryfication_for_evaluation_of_exercise}}</td>
+                          <td><label for="method_of_veryfication_for_evaluation_of_exercise"><b>Metoda weryfikacji (ćwiczenia):</b></label></td>
+                          <td><textarea>{{$contents->method_of_veryfication_for_evaluation_of_exercise}}</textarea></td>
                       </tr>
                       <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_seminars">Metoda weryfikacji (seminaria):</label></td>
-                          <td>{{$contents->method_of_veryfication_for_evaluation_of_seminars}}</td>
+                          <td><label for="method_of_veryfication_for_evaluation_of_seminars"><b>Metoda weryfikacji (seminaria):</b></label></td>
+                          <td><textarea>{{$contents->method_of_veryfication_for_evaluation_of_seminars}}</textarea></td>
                       </tr>
                   </table>
-              </form>
-
-          
-
-                
           </div>        
     </body>
     <style>
@@ -104,11 +97,15 @@
             padding: 5px;
             border-bottom: 1px solid gray;
         }
+        textarea {
+            min-width: 1100px;
+            max-width: 1100px; 
+            min-height: 200px;
+            background: #e8eaf1;
+        }
     </style>
 
 <script>                    
-         
-    
     // Delete success message after 8s
     setTimeout(function() {
         var successMessage = document.querySelector('.success');

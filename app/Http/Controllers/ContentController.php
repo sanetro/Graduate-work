@@ -86,13 +86,14 @@ class ContentController extends Controller
     
         if (session()->get('user')) 
         {   
-            $contents = SubjectContent::find($r->id);
+            $content = SubjectContent::find($r->id);
             return view("edit-content-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
                 'department' =>         session()->get('user')['department'],
-                'contents'=>            $contents,
+                'content'=>             $content,
                 'id' =>                 $r->id,
+                'code' =>               $r->code
             ]);
         } else {
             return redirect()->back();
@@ -120,23 +121,22 @@ class ContentController extends Controller
     }
 
     public function update(Request $r) {
-                
-        
-            $suply = SubjectContent::where('id', $r->id)
-                ->update([
-                    'type_of_content' =>                                     $r->input('type_of_content'),
-                    'content_description' =>                                 $r->input('content_description'),
-                    'tags' =>                                                $r->input('tags'),
-                    'difficulty_level' =>                                    $r->input('difficulty_level'),
-                    'method_of_veryfication_for_evaluation_of_lecturer' =>   $r->input('method_of_veryfication_for_evaluation_of_lecturer'),
-                    'method_of_veryfication_for_evaluation_of_exercise' =>   $r->input('method_of_veryfication_for_evaluation_of_exercise'),
-                    'method_of_veryfication_for_evaluation_of_seminars' =>   $r->input('method_of_veryfication_for_evaluation_of_seminars'),
-                ]);
-        
-        
-            // Transfer with successful flag
-            return redirect()->route('readContent', ['id' => $r->id, 'code' => 'code', 'flag'=>0]);
-    }
+        $suply = SubjectContent::where('id', $r->id)
+            ->update([
+                'type_of_content' =>                                     $r->input('type_of_content'),
+                'content_description' =>                                 $r->input('content_description'),
+                'tags' =>                                                $r->input('tags'),
+                'difficulty_level' =>                                    $r->input('difficulty_level'),
+                'method_of_veryfication_for_evaluation_of_lecturer' =>   $r->input('method_of_veryfication_for_evaluation_of_lecturer'),
+                'method_of_veryfication_for_evaluation_of_exercise' =>   $r->input('method_of_veryfication_for_evaluation_of_exercise'),
+                'method_of_veryfication_for_evaluation_of_seminars' =>   $r->input('method_of_veryfication_for_evaluation_of_seminars'),
+            ]);
+            // tmp script - future changes
+            echo "<script>window.history.go(-2);</script>"; 
+            
+            // not working
+            //return redirect()->route('readContent', ['code' => $r->code, 'id' => $r->id, 'flag'=>0]);
+        }
 
     
     public function destroy(Request $r) {

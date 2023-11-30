@@ -70,7 +70,7 @@
               
                <div class="content-container">
                <h2 id="list-of-subjects-p" style="margin-top: 20px">Lista wszystkich treści do <i>{{ $code }}</i>
-
+                
                     <a href="{{ route("addContent", ['code'=> $code, 'id' => $id]) }}">
                         <button class="custom-button-account" style="width: fit-content; float: right; font-size: 16px" >
                             Stwórz i dodaj nową treść przedmiotu
@@ -95,18 +95,18 @@
                   <tbody>
                       @forelse ($contents as $c)
                           <tr>
-                              <td>{{ $c->id }}</td>
-                              <td>{{ $c->type_of_content }}</td>
-                              <td>{{ $c->content_description }}</td>
-                              <td>{{ $c->tags }}</td>
-                              <td>{{ $c->difficulty_level }}</td>
+                            <td>{{ $c->id }}</td>
+                            <td>{{ strlen($c->type_of_content) > 20 ? substr($c->type_of_content, 0, 20) . '...' : $c->type_of_content }}</td>
+                            <td>{{ strlen($c->content_description) > 60 ? substr($c->content_description, 0, 60) . '...' : $c->content_description }}</td>
+                            <td>{{ strlen($c->tags) > 20 ? substr($c->tags, 0, 20) . '...' : $c->tags }}</td>
+                            <td>{{ strlen($c->difficulty_level) > 10 ? substr($c->difficulty_level, 0, 10) . '...' : $c->difficulty_level }}</td>
                               <td>
                                 <a href="{{ route('detailedContent', ['id' => $c->id]); }}">
                                     <img src={{ asset('images/see.png') }} class="link-open-in-new-page">
                                 </a>
                               </td>
                               <td>
-                                <a href="{{ route('editContent', ['id' => $c->id]); }}">
+                                <a href="{{ route('editContent', ['id' => $c->id, 'code' => $code, 'contents' => $contents]); }}">
                                     <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page">
                                 </a>
                               </td>
@@ -126,12 +126,10 @@
               
             
                 
-          </div>        
+          </div>
     </body>
 
 <script>                    
-         
-    
     // Delete success message after 8s
     setTimeout(function() {
         var successMessage = document.querySelector('.success');
