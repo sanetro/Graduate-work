@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SylabusToContent;
-use App\Models\SubjectContent;
+use App\Models\SylabusToEffect;
+use App\Models\SubjectEffect;
 use Illuminate\Http\Request;
 
 
 
-class ContentController extends Controller
+class EffectController extends Controller
 {
     
     public function read(Request $r) {
@@ -16,15 +16,17 @@ class ContentController extends Controller
             return redirect()->route('welcome');
     
         if (session()->get('user')) {   
-            $groupBelongsToSubject = SylabusToContent::where('sylabus_id', (int) $r->id)
-                ->pluck('subject_contents_id')
+            $groupBelongsToSubject = SylabusToEffect::where('sylabus_id', (int) $r->id)
+                ->pluck('subject_effects_id')
                 ->toArray();
-            $contents = SubjectContent::whereIn('id', $groupBelongsToSubject)->get();
-            return view("content-sylabus", [
+            $effects = SubjectEffect::whereIn('id', $groupBelongsToSubject)->get();
+            $ste = SylabusToEffect::all();
+            // dd($groupBelongsToSubject);
+            return view("effects-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
-                'department' =>         session()->get('user')['department'],
-                'contents'=>            $contents,
+                'department' =>         session()->get('user')['depSubjectContentartment'],
+                'effects'=>             $effects,
                 'code' =>               $r->code,
                 'id' =>                 $r->id,
             ]);
@@ -40,12 +42,12 @@ class ContentController extends Controller
     
         if (session()->get('user')) 
         {   
-            $contents = SylabusToContent::all();
-            return view("add-content-sylabus", [
+            $effects = SylabusToEffect::all();
+            return view("add-effect-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
                 'department' =>         session()->get('user')['department'],
-                'contents'=>            $contents,
+                'effect'=>              $effects,
                 'code' =>               $r->code,
                 'id' =>                 $r->id,
             ]);
@@ -56,27 +58,23 @@ class ContentController extends Controller
 
     public function create(Request $r) {      
         $data = $r->validate([
-            'type_of_content' => 'required',
-            'content_description' => 'required',
-            'tags' => 'required',
-            'difficulty_level' => 'required',
-            'method_of_veryfication_for_evaluation_of_lecturer' => 'required',
-            'method_of_veryfication_for_evaluation_of_exercise' => 'required',
-            'method_of_veryfication_for_evaluation_of_seminars' => 'required',
+            'symbol' => 'required',
+            'category_effects_id' => 'required',
+            'description' => 'required',
         ]);
-        $content = new SubjectContent($data);
-        $content->save();
+        $effect = new SubjectEffect($data);
+        $effect->save();
         // Go to the next page and combine two id's in link table
-        return redirect()->route('spanContent', ['id' => $r->id, 'code' => $r->code, 'subject_contents_id' => $content->id]);
+        return redirect()->route('spanEffect', ['id' => $r->id, 'code' => $r->code, 'subject_effect_id' => $effect->id]);
     }
 
     public function span(Request $r) {
-        $lastRecordId = SubjectContent::orderBy('id', 'desc')->first()->id;
-        $content = new SylabusToContent();
-        $content->sylabus_id = $r->id;
-        $content->subject_contents_id = $r->subject_contents_id;
-        $content->save();
-        return redirect()->route('readContent', ['id' => $r->id, 'code' => $r->code, 'flag'=>0]);
+        $lastRecordId = SubjectEffect::orderBy('id', 'desc')->first()->id;
+        $effect = new SylabusToEffect();
+        $effect->sylabus_id = $r->id;
+        $effect->subject_effects_id = $r->subject_effect_id;
+        $effect->save();
+        return redirect()->route('readEffect', ['id' => $r->id, 'code' => $r->code, 'flag'=>0]);
     }
 
     public function edit(Request $r) {
@@ -86,12 +84,12 @@ class ContentController extends Controller
     
         if (session()->get('user')) 
         {   
-            $content = SubjectContent::find($r->id);
-            return view("edit-content-sylabus", [
+            $effect = SubjectEffect::find($r->id);
+            return view("edit-effect-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
                 'department' =>         session()->get('user')['department'],
-                'content'=>             $content,
+                'effect'=>              $effect,
                 'id' =>                 $r->id,
                 'code' =>               $r->code
             ]);
@@ -107,12 +105,14 @@ class ContentController extends Controller
     
         if (session()->get('user')) 
         {   
-            $contents = SubjectContent::find($r->id);
-            return view("detailed-content-sylabus", [
+            $effects = SubjectEffect::find($r->id);
+            $category = $effects->categories->name;
+            return view("detailed-effect-sylabus", [
                 'email' =>              session()->get('user')['email'],
                 'role' =>               session()->get('user')['role'],
                 'department' =>         session()->get('user')['department'],
-                'contents'=>            $contents,
+                'effects'=>             $effects,
+                'category'=>            $category,  
                 'id' =>                 $r->id,
             ]);
         } else {
@@ -140,9 +140,9 @@ class ContentController extends Controller
 
     
     public function destroy(Request $r) {
-        $content = SubjectContent::find($r->id);
-        if ($content) {
-            $content->delete();
+        $effect = SubjectEffect::find($r->id);
+        if ($effect) {
+            $effect->delete();
             return redirect()->back();
         }
     }

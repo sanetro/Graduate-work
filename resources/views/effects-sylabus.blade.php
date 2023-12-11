@@ -69,11 +69,11 @@
             
               
                <div class="content-container">
-               <h2 id="list-of-subjects-p" style="margin-top: 20px">Lista wszystkich treści do <i>{{ $code }}</i>
+               <h2 id="list-of-subjects-p" style="margin-top: 20px">Lista efektów przedmiotu <i>{{ $code }}</i>
                 
-                    <a href="{{ route("addContent", ['code'=> $code, 'id' => $id]) }}">
+                    <a href="{{ route("addEffect", ['code'=> $code, 'id' => $id]) }}">
                         <button class="custom-button-account" style="width: fit-content; float: right; font-size: 16px" >
-                            Stwórz i dodaj nową treść przedmiotu
+                            Dodaj efekt przedmiotu
                         </button>
                     </a>
                 </h2>
@@ -82,43 +82,47 @@
               <table class="subject-list-table" style="width: 70%; margin: 24px auto">
                   <thead>
                       <tr>
-                          <td>id</td>
-                          <td>Typ treści</td>
+                          <td>Id</td>
+                          <td>Symbol</td>
+                          <td>Kategoria</td>
                           <td>Opis</td>
-                          <td>Symbole</td>
-                          <td>Poziom trudności</td>
                           <td>Więcej</td>
                           <td>Zmień</td>
                           <td>Usuń</td>
+                          <td>Złącz</td>
                       </tr>
                   </thead>
                   <tbody>
-                      @forelse ($contents as $c)
+                      @forelse ($effects as $c)
                           <tr>
                             <td>{{ $c->id }}</td>
-                            <td>{{ strlen($c->type_of_content) > 20 ? substr($c->type_of_content, 0, 20) . '...' : $c->type_of_content }}</td>
-                            <td>{{ strlen($c->content_description) > 60 ? substr($c->content_description, 0, 60) . '...' : $c->content_description }}</td>
-                            <td>{{ strlen($c->tags) > 20 ? substr($c->tags, 0, 20) . '...' : $c->tags }}</td>
-                            <td>{{ strlen($c->difficulty_level) > 10 ? substr($c->difficulty_level, 0, 10) . '...' : $c->difficulty_level }}</td>
+                            <td>{{ strlen($c->symbol) > 20 ? substr($c->symbol, 0, 20) . '...' : $c->symbol }}</td>
+                            <td>{{ strlen($c->category_effects_id) > 20 ? substr($c->category_effects_id, 0, 20) . '...' : $c->category_effects_id }}</td>
+                            <td>{{ strlen($c->description) > 60 ? substr($c->description, 0, 60) . '...' : $c->description }}</td>
                               <td>
-                                <a href="{{ route('detailedContent', ['id' => $c->id]); }}">
+                                <a href="{{ route('detailedEffect', ['id' => $c->id]); }}">
                                     <img src={{ asset('images/see.png') }} class="link-open-in-new-page">
                                 </a>
                               </td>
                               <td>
-                                <a href="{{ route('editContent', ['id' => $c->id, 'code' => $code, 'contents' => $contents]); }}">
+                                <a href="{{ route('editEffect', ['id' => $c->id, 'code' => $code, 'effects' => $effects]); }}">
                                     <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page">
                                 </a>
                               </td>
                               <td>
-                                <a href="{{ route('destroyContent', ['id' => $c->id]); }}">
+                                <a href="{{ route('destroyEffect', ['id' => $c->id]); }}">
                                     <img src={{ asset('images/delete.png') }} class="link-open-in-new-page">
+                                </a>
+                              </td>
+                              <td>
+                                <a href="{{ route('linkEffect', ['id' => $c->id]); }}">
+                                    <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page">
                                 </a>
                               </td>
                           </tr>                         
                       @empty
                         <p class="alert">
-                            Brak danych. Dodaj treść przedmiotu.
+                            Brak danych. Dodaj efekt przedmiotu.
                         </p>    
                       @endforelse
                   </tbody> 

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\SylabusController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\EffectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +59,14 @@ Route::get( 'content/span', [ContentController::class, 'span'])->name('spanConte
 Route::post( 'content/create/{code}/{id}', [ContentController::class, 'create'])->name('createContent');
 Route::get( 'content/destroy', [ContentController::class, 'destroy'])->name('destroyContent');
 Route::post( 'content/update/{code}/{id}', [ContentController::class, 'update'])->name('updateContent');
+
+
+Route::match(['get', 'post'], 'effect/{code}/{id}', [EffectController::class, 'read'])->name('readEffect');
+Route::get( 'effects/add/{code}/{id}', [EffectController::class, 'add'])->name('addEffect');
+Route::get( 'effects/edit/{code}/{id}', [EffectController::class, 'edit'])->name('editEffect');
+Route::get( 'effects/detailed', [EffectController::class, 'detailed'])->name('detailedEffect');
+Route::get( 'effects/span', [EffectController::class, 'span'])->name('spanEffect');
+Route::post( 'effects/create/{code}/{id}', [EffectController::class, 'create'])->name('createEffect');
+Route::get( 'effects/destroy', [EffectController::class, 'destroy'])->name('destroyEffect');
+Route::post( 'effects/update/{code}/{id}', [EffectController::class, 'update'])->name('updateEffect');
+Route::get( 'effects/link', [EffectController::class, 'link'])->name('linkEffect');
