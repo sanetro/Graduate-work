@@ -121,22 +121,19 @@ class EffectController extends Controller
     }
 
     public function update(Request $r) {
-        $suply = SubjectContent::where('id', $r->id)
-            ->update([
-                'type_of_content' =>                                     $r->input('type_of_content'),
-                'content_description' =>                                 $r->input('content_description'),
-                'tags' =>                                                $r->input('tags'),
-                'difficulty_level' =>                                    $r->input('difficulty_level'),
-                'method_of_veryfication_for_evaluation_of_lecturer' =>   $r->input('method_of_veryfication_for_evaluation_of_lecturer'),
-                'method_of_veryfication_for_evaluation_of_exercise' =>   $r->input('method_of_veryfication_for_evaluation_of_exercise'),
-                'method_of_veryfication_for_evaluation_of_seminars' =>   $r->input('method_of_veryfication_for_evaluation_of_seminars'),
-            ]);
-            // tmp script - future changes
-            echo "<script>window.history.go(-2);</script>"; 
-            
-            // not working
-            //return redirect()->route('readContent', ['code' => $r->code, 'id' => $r->id, 'flag'=>0]);
-        }
+        $data = $r->validate([
+            'symbol' => 'required',
+            'category_effects_id' => 'required',
+            'description' => 'required',
+        ]);
+        $effect = SubjectEffect::find($r->id);
+        $effect->symbol = $r->symbol;
+        $effect->category_effects_id = $r->category_effects_id;
+        $effect->description = $r->description;
+        $effect->update();
+        
+        echo "<script>window.history.go(-2);</script>"; 
+    }
 
     
     public function destroy(Request $r) {

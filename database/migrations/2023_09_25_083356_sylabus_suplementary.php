@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('language_of_lessons', 100)->nullable();
             $table->string('list_of_primary_literature_to_the_subject', 2000)->nullable();
             $table->string('list_of_suplementary_literature_to_the_subject', 2000)->nullable();
+            $table->string('examination_of_lecturers', 2000)->nullable();
+            $table->string('examination_of_exercises', 2000)->nullable();
+            $table->string('examination_of_seminars', 2000)->nullable();
             $table->text('lecturers_competence_to_teach_the_subject')->nullable();
             $table->unsignedBigInteger('directional_effects_id')->foreignId('directional_effects_id')->nullable()->references('id')->on('directional_effects');
             $table->unsignedBigInteger('subject_effects_id')->foreignId('subject_effects_id')->nullable()->references('id')->on('subject_effects');

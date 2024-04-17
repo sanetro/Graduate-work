@@ -58,7 +58,7 @@
             <div class="layout-panel-start">
                   
               <div style="margin:5% auto; width:1200px">
-              <h2>Pełna treść przedmiotu</h2>
+              <h2>Pełny efekt przedmiotu</h2>
               <br>
                   <table>
                     <tr style="border-bottom: 1px;">

@@ -29,6 +29,9 @@ class Sylabus_suplementary extends Model
         'lecturers_competence_to_teach_the_subject',
         'directional_effects_id',
         'subject_effects_id',
+        'examination_of_lecturers',
+        'examination_of_exercises',
+        'examination_of_seminars'
     ];
 
     // Możesz dodać relacje lub inne metody modelu tutaj

@@ -57,7 +57,7 @@
             <div class="layout-panel-start">
                   
               <div style="margin:5% auto; width: 900px;">
-              <h2>Zmodyfikuj treść przedmiotu</h2>
+              <h2>Zmodyfikuj efekt przedmiotu</h2>
               <br>
 
               <form class="edit-form" method="post" action="{{ route('updateEffect', ['id' => $id, 'code' => $code]) }}">

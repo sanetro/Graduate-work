@@ -7,6 +7,7 @@ use App\Http\Controllers\ActionController;
 use App\Http\Controllers\SylabusController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\EffectController;
+use App\Http\Controllers\DirectionalEffectsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,8 @@ Route::post('/panel/searchSylabuses',
 
 
 Route::match(['get', 'post'], 'edit/{code}/{id}', [SylabusController::class, 'read'])->name('read');
+Route::get( 'render/{id}/{subject_name}', [SylabusController::class, 'render'])->name('render');
+Route::get( 'matrix', [SylabusController::class, 'matrix'])->name('matrix');
 Route::match(['get', 'post'], 'edit/{code}/{id}/change', [SylabusController::class, 'change'])->name('change');
 
 Route::match(['get', 'post'], 'content/{code}/{id}', [ContentController::class, 'read'])->name('readContent');
@@ -69,4 +72,8 @@ Route::get( 'effects/span', [EffectController::class, 'span'])->name('spanEffect
 Route::post( 'effects/create/{code}/{id}', [EffectController::class, 'create'])->name('createEffect');
 Route::get( 'effects/destroy', [EffectController::class, 'destroy'])->name('destroyEffect');
 Route::post( 'effects/update/{code}/{id}', [EffectController::class, 'update'])->name('updateEffect');
-Route::get( 'effects/link', [EffectController::class, 'link'])->name('linkEffect');
+
+
+Route::get( 'directional-effect/{subject_effect_id}', [DirectionalEffectsController::class, 'read'])->name('readDirectional');
+Route::get( 'directional-effect/span/{subject_effect_id}/{directional_effect_id}', [DirectionalEffectsController::class, 'span'])->name('spanDirectionalEffect');
+Route::get( 'directional-effect/unspan/{subject_effect_id}/{directional_effect_id}', [DirectionalEffectsController::class, 'unspan'])->name('unspanDirectionalEffect');

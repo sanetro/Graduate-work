@@ -85,11 +85,16 @@ class ActionController extends Controller
                 ->orWhere('semester', 'LIKE', $givenWord);
         })->get();
 
+        $userId = session()->get('user')['id'];
+        $userSylabusesId = UserToSylabus::where('user_id', $userId)->pluck('sylabus_id');
+        $userSylabusesAlllow = Sylabus_initialized::whereIn('id', $userSylabusesId)->get();
+
         return view('find-sylabuses', [ 
             'account' => session()->get('user')['id'],
             'email' => session()->get('user')['email'],
             'userSylabuses' => $sylabusesByGivenWord,
             'lastSearchedWord' => $givenWord,
+            'userSylabusesAlllow' => $userSylabusesAlllow
         ]);   
     }
     public function showHelp() {

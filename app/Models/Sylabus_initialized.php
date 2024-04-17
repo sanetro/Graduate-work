@@ -34,7 +34,7 @@ class Sylabus_initialized extends Model
         'lectures_number_of_hours',
         'seminars_number_of_hours',
         'exercise_number_of_hours',
-        'type_of_exercise',
+        'type_of_exercice',
         'direction_name',
         'subject_content_id',
         'number_of_hours_with_lecturer',
@@ -56,4 +56,8 @@ class Sylabus_initialized extends Model
     {
         return $this->belongsTo(SubjectContent::class, 'subject_content_id', 'id');
     }
+
+    
+
+    
 }

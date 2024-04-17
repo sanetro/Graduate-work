@@ -61,10 +61,6 @@
                   <p class="success">
                       Pomyślnie zapisano zmiany
                   </p>
-              @elseif (request()->input('flag')==1)
-                  <p class="alert">
-                      Nie odnotowano żadnych zmian
-                  </p>
               @endif
           
               <table class="subject-list-table">
@@ -334,7 +330,70 @@
 
                         </td>
                       </tr>
+
                       <tr>
+                        <td>
+                          <b id="title-examination_of_lecturers"></b>
+                        </td>
+                        <td>
+                          <i id="format-examination_of_lecturers"></i>                
+                        </td>
+                        <td>
+                          <textarea 
+                            class="custom-input-edit" 
+                            type="text" 
+                            name="examination_of_lecturers" 
+                            >{{ $sylabusSuplementary->examination_of_lecturers }}</textarea>
+                          </td>
+                        <td>
+                          <i id="comment-examination_of_lecturers"></i>
+
+                        </td>
+                      </tr>
+                      <tr>
+
+                        <tr>
+                          <td>
+                            <b id="title-examination_of_exercises"></b>
+                          </td>
+                          <td>
+                            <i id="format-examination_of_exercises"></i>                
+                          </td>
+                          <td>
+                            <textarea 
+                              class="custom-input-edit" 
+                              type="text" 
+                              name="examination_of_exercises" 
+                              >{{ $sylabusSuplementary->examination_of_exercises }}</textarea>
+
+                          </td>
+                          <td>
+                            <i id="comment-examination_of_exercises"></i>
+  
+                          </td>
+                        </tr>
+                        <tr>
+
+                          <tr>
+                            <td>
+                              <b id="title-examination_of_seminars"></b>
+                            </td>
+                            <td>
+                              <i id="format-examination_of_seminars"></i>                
+                            </td>
+                            <td>
+                              <textarea 
+                                class="custom-input-edit" 
+                                type="text" 
+                                name="examination_of_seminars" 
+                                >{{ $sylabusSuplementary->examination_of_seminars }}</textarea>
+                            </td>
+                            <td>
+                              <i id="comment-examination_of_seminars"></i>
+    
+                            </td>
+                          </tr>
+                          <tr>
                         <td colspan="4">
                           <button class="custom-button-account" type="submit" style="width:100%">Zapisz zmiany</button>
                         </td>
@@ -365,7 +424,7 @@
           'lectures_number_of_hours',
           'seminars_number_of_hours',
           'exercise_number_of_hours',
-          'type_of_exercise',
+          'type_of_exercice',
           'direction_name',
           'subject_content_id',
           'number_of_hours_with_lecturer',
@@ -386,6 +445,9 @@
           'list_of_primary_literature_to_the_subject',
           'list_of_suplementary_literature_to_the_subject',
           'lecturers_competence_to_teach_the_subject',
+          'examination_of_lecturers',
+          'examination_of_exercises',
+          'examination_of_seminars',
       ];
 
       let polish_titles = [
@@ -397,7 +459,7 @@
         'Semestr',
         'ID katedry',
         'Wymagany',
-        'Kalkulator dla przedmiotów do zamówienia',
+        'Przelicznik do przedmiotów dobieranych',
         'Status przedmiotu',
         'Podsumowanie ECTS',
         'Całkowita liczba godzin',
@@ -425,6 +487,9 @@
         'Lista podstawowej literatury do przedmiotu',
         'Lista uzupełniającej literatury do przedmiotu ',
         'Kompetencje prowadzącego przedmiot ',
+        'Wymagania do uzyskania zaliczenia z wykładów.',
+        'Wymagania do uzyskania zaliczenia z ćwiczeń.',
+        'Wymagania do uzyskania zaliczenia z seminarii.'
       ];
       
       let polish_comments = [
@@ -436,7 +501,7 @@
         'Semestr',
         'ID katedry',
         'Wymagany',
-        'Kalkulator dla przedmiotów do zamówienia',
+        'Przelicznik do przedmiotów dobieranych',
         'Status przedmiotu',
         'Podsumowanie ECTS',
         'Całkowita liczba godzin',
@@ -454,7 +519,7 @@
         'Liczba godzin zajęć online',
         'Liczba godzin własnej pracy',
         'Profil studiów',
-        ' 	Należy opisać inne formy prowadznia zajęć, w przypadku gdy występują wpólnie ze wskazanymi w rodzaju ćwiczeń. Oprócz podania dodatkowej formy prowadzenia zajęć, należy podać liczbę godzin przeznaczonych na tę formę, np. ćwiczenia terenowe (5 godz.)',
+        'Należy opisać inne formy prowadznia zajęć, w przypadku gdy występują wpólnie ze wskazanymi w rodzaju ćwiczeń. Oprócz podania dodatkowej formy prowadzenia zajęć, należy podać liczbę godzin przeznaczonych na tę formę, np. ćwiczenia terenowe (5 godz.)',
         '',
         '',
         '',
@@ -464,6 +529,9 @@
         'Spis literatury podstawowej do przedmiotu. W przypadku przedmiotów podstawowych i kierunkowych proszę również wskazać wymagany podręcznik lub podręczniki zawierające potrzebne treści.',
         'Spis literatury uzupełniającej do przedmiotu',
         'Należy wpisać publikacje tematycznie związane z prowadzonym przedmiotem, ukończone studia podyplomowe, doświadczenie zawodowe, wykonane zbiory dokumentacji, ekspertyzy, operaty techniczne, itp. ',
+        '',
+        '',
+        ''
       ];
 
       let polish_formats = [
@@ -503,6 +571,9 @@
         'tekst (2000 zn.)',
         'tekst (2000 zn.)',
         'tekst (1000 zn.)',
+        'tekst (2000 zn.)',
+        'tekst (2000 zn.)',
+        'tekst (2000 zn.)',
       ];
 
     for (let i = 0; i < original_id_of_inputs.length; i++) {

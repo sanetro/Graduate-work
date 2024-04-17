@@ -97,7 +97,7 @@
                           <tr>
                             <td>{{ $c->id }}</td>
                             <td>{{ strlen($c->symbol) > 20 ? substr($c->symbol, 0, 20) . '...' : $c->symbol }}</td>
-                            <td>{{ strlen($c->category_effects_id) > 20 ? substr($c->category_effects_id, 0, 20) . '...' : $c->category_effects_id }}</td>
+                            <td>{{ strlen($c->categories->name) > 20 ? substr($c->categories->name, 0, 20) . '...' : $c->categories->name }}</td>
                             <td>{{ strlen($c->description) > 60 ? substr($c->description, 0, 60) . '...' : $c->description }}</td>
                               <td>
                                 <a href="{{ route('detailedEffect', ['id' => $c->id]); }}">
@@ -110,16 +110,16 @@
                                 </a>
                               </td>
                               <td>
-                                <a href="{{ route('destroyEffect', ['id' => $c->id]); }}">
+                                <a href="{{ route('destroyEffect', ['id' => $c->id, 'code' => $code, 'effects' => $effects]); }}">
                                     <img src={{ asset('images/delete.png') }} class="link-open-in-new-page">
                                 </a>
                               </td>
                               <td>
-                                <a href="{{ route('linkEffect', ['id' => $c->id]); }}">
+                                <a href="{{ route('readDirectional', ['subject_effect_id' => $c->id]); }}">
                                     <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page">
                                 </a>
                               </td>
-                          </tr>                         
+                          </tr>
                       @empty
                         <p class="alert">
                             Brak danych. Dodaj efekt przedmiotu.

@@ -64,8 +64,14 @@
                   @csrf 
                   <table>
                       <tr>
-                          <td><label for="type_of_content">Rodzaj treść:</label></td>
-                          <td style="width: 80%"><input type="text" name="type_of_content" id="type_of_content" class="form-input-fill" required maxlength="100" value="{{$content->type_of_content}}"></td>
+                        <td><label for="type_of_content">Rodzaj treść:</label></td>
+                        <td style="width: 80%">
+                            <select class="custom-input-edit" name="type_of_content" style="background: white">
+                              <option value="Wykłady" @if($content->type_of_content == "Wykłady") selected @endif>Wykłady</option>
+                              <option value="Ćwiczenia" @if($content->type_of_content == "Ćwiczenia") selected @endif>Ćwiczenia</option>
+                              <option value="Seminaria" @if($content->type_of_content == "Seminaria") selected @endif>Seminaria</option>
+                            </select>
+                          </td>
                       </tr>
                       <tr>
                           <td><label for="content_description">Opis:</label></td>
@@ -77,19 +83,18 @@
                       </tr>
                       <tr>
                           <td><label for="difficulty_level">Poziom trudności:</label></td>
-                          <td><input type="text" name="difficulty_level" id="difficulty_level" class="form-input-fill" maxlength="50" required value="{{$content->difficulty_level}}"></td>
+                          <td>
+                            <select class="custom-input-edit" name="difficulty_level" style="background: white">
+                                <option value="Wprowadzenie" @if($content->difficulty_level == "Wprowadzenie") selected @endif>Wprowadzenie</option>
+                                <option value="Podstawowy" @if($content->difficulty_level == "Podstawowy") selected @endif>Podstawowy</option>
+                                <option value="Uniwersalny" @if($content->difficulty_level == "Uniwersalny") selected @endif>Uniwersalny</option>
+                                <option value="Zaawansowany" @if($content->difficulty_level == "Zaawansowany") selected @endif>Zaawansowany</option>
+                              </select>
+                          </td>
                       </tr>
                       <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_lecturer">Metoda weryfikacji (wykładowca):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_lecturer" id="verification_lecturer" rows="4" maxlength="2000" required>{{$content->method_of_veryfication_for_evaluation_of_lecturer}}</textarea></td>
-                      </tr>
-                      <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_exercise">Metoda weryfikacji (ćwiczenia):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_exercise" id="verification_exercise"  rows="4" maxlength="2000" required>{{$content->method_of_veryfication_for_evaluation_of_exercise}}</textarea></td>
-                      </tr>
-                      <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_seminars">Metoda weryfikacji (seminaria):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_seminars" id="verification_seminars" rows="4" maxlength="2000" required>{{$content->method_of_veryfication_for_evaluation_of_seminars}}</textarea></td>
+                          <td><label for="method_of_veryfication_for_evaluation">Metoda weryfikacji (np. z wykładów / ćwiczeń / seminarii):</label></td>
+                          <td><textarea name="method_of_veryfication_for_evaluation" id="verification_lecturer" rows="4" maxlength="2000" required>{{$content->method_of_veryfication_for_evaluation}}</textarea></td>
                       </tr>
                       <tr>
                         <td></td>

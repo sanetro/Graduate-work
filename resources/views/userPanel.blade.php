@@ -26,16 +26,12 @@
                             Panel główny
                         </button>
                     </a>
-                    <a href="{{route('panel')}}" >
+                    <a href="{{route('matrix')}}" >
                         <button class="custom-button-account" class="custom-button-action" style="width: 250px; background: white; color: black;" >
                             Macierz efektów kształcenia
                         </button>
                     </a>
-                    <a href="{{route('panel')}}" >
-                        <button class="custom-button-account" class="custom-button-action" style="width: 250px; background: white; color: black;" >
-                           Wszystkie przedmioty
-                        </button>
-                    </a>
+                    
                 </div>
                 <div class="right-nav">
                     
@@ -78,16 +74,15 @@
                                 <tr>
                                     <td>Kod przedmiotu</td>
                                     <td>Nazwa</td>
-                                    <td>Koordynator/rzy</td>
                                     <td>Rodzaj studiów</td>
                                     <td>Specjalizacja</td>
                                     <td>Stopień Studiów</td>
                                     <td>Semestr</td>
+                                    <td>Katedra</td>
                                     <td>Sczegóły</td>
                                     <td>Treści</td>
                                     <td>Efekty</td>
                                     <td>Sylabus</td>
-                                    <td>Uwagi</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,27 +94,38 @@
                                         <td>{{ $s->speciality }}</td>
                                         <td>{{ $s->degree }}</td>
                                         <td>{{ $s->semester }}</td>
-                                        <td>{{ $s->chair_id }}</td>
+                                        <td>{{  $s->chair->name  }}</td>
 
                                         <td>
-                                            <a href="edit/{{$s->code_subject}}/{{$s->id}}?flag=None">
-                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Edytuj przedmiot">
-                                            </a>
+                                            @if ($userSylabuses->contains('id', $s->id))
+                                                <a href="edit/{{$s->code_subject}}/{{$s->id}}?flag=None">
+                                                    <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" >
+                                                </a>    
+                                            @else
+                                                -
+                                            @endif                                            
                                         </td>
                                         <td>
+                                            @if ($userSylabuses->contains('id', $s->id))
                                             <a href="content/{{$s->code_subject}}/{{$s->id}}?flag=None">
-                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Treści przedmiotu">
+                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" >
                                             </a>
+                                            @else
+                                                -
+                                            @endif  
                                         </td>
                                         <td>
+                                            @if ($userSylabuses->contains('id', $s->id))
                                             <a href="effect/{{$s->code_subject}}/{{$s->id}}?flag=None">
-                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Efekty przedmiot">
+                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" >
                                             </a>
+                                            @else
+                                                -
+                                            @endif  
                                         </td>
-                                        <td>Sylabus</td>
                                         <td>
-                                            <a href="effect/{{$s->code_subject}}/{{$s->id}}?flag=None">
-                                                <img src={{ asset('images/raport-correct.png') }} class="link-open-in-new-page" alt="Efekty przedmiot">
+                                            <a href="render/{{$s->id}}/{{$s->name_subject}}">
+                                                <img src={{ asset('images/see.png') }} class="link-open-in-new-page" >
                                             </a>
                                         </td>
                                     </tr>                                

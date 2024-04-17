@@ -60,9 +60,7 @@ class ContentController extends Controller
             'content_description' => 'required',
             'tags' => 'required',
             'difficulty_level' => 'required',
-            'method_of_veryfication_for_evaluation_of_lecturer' => 'required',
-            'method_of_veryfication_for_evaluation_of_exercise' => 'required',
-            'method_of_veryfication_for_evaluation_of_seminars' => 'required',
+            'method_of_veryfication_for_evaluation' => 'required',
         ]);
         $content = new SubjectContent($data);
         $content->save();
@@ -127,9 +125,7 @@ class ContentController extends Controller
                 'content_description' =>                                 $r->input('content_description'),
                 'tags' =>                                                $r->input('tags'),
                 'difficulty_level' =>                                    $r->input('difficulty_level'),
-                'method_of_veryfication_for_evaluation_of_lecturer' =>   $r->input('method_of_veryfication_for_evaluation_of_lecturer'),
-                'method_of_veryfication_for_evaluation_of_exercise' =>   $r->input('method_of_veryfication_for_evaluation_of_exercise'),
-                'method_of_veryfication_for_evaluation_of_seminars' =>   $r->input('method_of_veryfication_for_evaluation_of_seminars'),
+                'method_of_veryfication_for_evaluation' =>               $r->input('method_of_veryfication_for_evaluation'),
             ]);
             // tmp script - future changes
             echo "<script>window.history.go(-2);</script>"; 

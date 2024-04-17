@@ -61,10 +61,6 @@
                   <p class="success">
                       Pomyślnie zapisano zmiany
                   </p>
-              @elseif (request()->input('flag')==1)
-                  <p class="alert">
-                      Nie odnotowano żadnych zmian
-                  </p>
               @endif
             
               

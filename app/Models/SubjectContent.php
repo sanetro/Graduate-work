@@ -22,8 +22,6 @@ class SubjectContent extends Model
         'content_description',
         'tags',
         'difficulty_level',
-        'method_of_veryfication_for_evaluation_of_lecturer',
-        'method_of_veryfication_for_evaluation_of_exercise',
-        'method_of_veryfication_for_evaluation_of_seminars',
+        'method_of_veryfication_for_evaluation',
     ];
 }

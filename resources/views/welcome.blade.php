@@ -18,8 +18,7 @@
     <body class="antialiased">
         <div class="page">
             <div class="main-card"> <!-- TODO -->
-                <div class="main-card-picture">
-                </div>
+                
                 <div class="main-card-form">
                     <p style="font-size: 220%; margin: 20px">
                         Sylabus
@@ -36,15 +35,10 @@
                             <tr>
                                 <td>Hasło</td>
                                 <td colspan="2">
-                                    <input name="passwd" type="text" class="custom-input">
+                                    <input name="passwd" type="password" class="custom-input">
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Baza</td>
-                                <td colspan="2">
-                                    <input name="databaseName" type="number" class="custom-input">
-                                </td>
-                            </tr>
+                            
                         </table>
                         <input type="submit" value="Zaloguj" class="custom-button-login">
                     </form>

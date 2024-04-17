@@ -65,7 +65,13 @@
                   <table>
                       <tr>
                           <td><label for="type_of_content">Rodzaj treść:</label></td>
-                          <td style="width: 80%"><input type="text" name="type_of_content" id="type_of_content" class="form-input-fill" maxlength="100" required></td>
+                          <td style="width: 80%">
+                            <select class="custom-input-edit" name="type_of_content" style="background: white">
+                              <option value="Wykłady">Wykłady</option>
+                              <option value="Ćwiczenia">Ćwiczenia</option>
+                              <option value="Seminaria">Seminaria</option>
+                            </select>
+                          </td>
                       </tr>
                       <tr>
                           <td><label for="content_description">Opis:</label></td>
@@ -77,21 +83,19 @@
                       </tr>
                       <tr>
                           <td><label for="difficulty_level">Poziom trudności:</label></td>
-                          <td><input type="text" name="difficulty_level" id="difficulty_level" class="form-input-fill" maxlength="50" required></td>
+                          <td>
+                            <select class="custom-input-edit" name="difficulty_level" style="background: white">
+                                <option value="Wprowadzenie">Wprowadzenie</option>
+                                <option value="Podstawowy">Podstawowy</option>
+                                <option value="Uniwersalny">Uniwersalny</option>
+                                <option value="Zaawansowany">Zaawansowany</option>
+                              </select>
+                          </td>
                       </tr>
                       <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_lecturer">Metoda weryfikacji (wykładowca):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_lecturer" id="verification_lecturer" rows="4" maxlength="2000" required></textarea></td>
+                          <td><label for="method_of_veryfication_for_evaluation">Metoda weryfikacji (np. z wykładów / ćwiczeń / seminarii):</label></td>
+                          <td><textarea name="method_of_veryfication_for_evaluation" id="verification_lecturer" rows="4" maxlength="2000" required></textarea></td>
                       </tr>
-                      <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_exercise">Metoda weryfikacji (ćwiczenia):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_exercise" id="verification_exercise"  rows="4" maxlength="2000" required></textarea></td>
-                      </tr>
-                      <tr>
-                          <td><label for="method_of_veryfication_for_evaluation_of_seminars">Metoda weryfikacji (seminaria):</label></td>
-                          <td><textarea name="method_of_veryfication_for_evaluation_of_seminars" id="verification_seminars" rows="4" maxlength="2000" required></textarea></td>
-                      </tr>
-                      <tr>
                         <td></td>
                         <td><input class="custom-button-account" style="width: 100%" type="submit" value="Dodaj"></td>
                       </tr>

@@ -26,16 +26,12 @@
                             Panel główny
                         </button>
                     </a>
-                    <a href="{{route('panel')}}" >
+                    <a href="{{route('matrix')}}" >
                         <button class="custom-button-account" class="custom-button-action" style="width: 250px; background: white; color: black;" >
                             Macierz efektów kształcenia
                         </button>
                     </a>
-                    <a href="{{route('panel')}}" >
-                        <button class="custom-button-account" class="custom-button-action" style="width: 250px; background: white; color: black;" >
-                           Wszystkie przedmioty
-                        </button>
-                    </a>
+                    
                 </div>
                 <div class="right-nav">
                     
@@ -92,38 +88,63 @@
                                 <tr>
                                     <td>Kod przedmiotu</td>
                                     <td>Nazwa</td>
-                                    <td>Koordynator/rzy</td>
                                     <td>Rodzaj studiów</td>
                                     <td>Specjalizacja</td>
                                     <td>Stopień Studiów</td>
                                     <td>Semestr</td>
+                                    <td>Katedra</td>
                                     <td>SZG</td>
                                     <td>TRP</td>
                                     <td>EFP</td>
                                     <td>Sylabus</td>
-                                    <td>Uwagi</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($userSylabuses as $s)
-                                <tr>
-                                    <td>{{ $s->code_subject }}</td>
+                                    <tr>
+                                        <td>{{ $s->code_subject }}</td>
                                         <td>{{ $s->name_subject }}</td>
                                         <td>{{ $s->type_study }}</td>
                                         <td>{{ $s->speciality }}</td>
                                         <td>{{ $s->degree }}</td>
                                         <td>{{ $s->semester }}</td>
-                                        <td>{{ $s->chair_id }}</td>
-                                        
+                                        <td>{{  $s->chair->name }}</td>
+
                                         <td>
-                                            <a href="/{{$s->code_subject}}/{{$s->id}}?flag=None">
+                                            @if ($userSylabusesAlllow->contains('id', $s->id))
+
+                                            <a href="{{ route('read', ['code' => $s->code_subject, 'id' => $s->id, 'flag' => 'None']) }}">
                                                 <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Edytuj przedmiot">
                                             </a>
+                                            @else
+                                            -
+                                            @endif
                                         </td>
-                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
-                                        <td><a href="/"><img src={{ asset('images/open-on-new-page.png') }} class="link-open-in-new-page"/></a></td>
-                                        <td>Sylabus</td>
-                                        <td>Uwagi</td>
+                                        <td>
+                                            @if ($userSylabusesAlllow->contains('id', $s->id))
+
+                                            <a href="{{ route('readContent', ['code' => $s->code_subject, 'id' => $s->id, 'flag' => 'None']) }}">
+                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Treści przedmiotu">
+                                            </a>
+                                            @else
+                                            -
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($userSylabusesAlllow->contains('id', $s->id))
+
+                                            <a href="{{ route('readEffect', ['code' => $s->code_subject, 'id' => $s->id, 'flag' => 'None']) }}">
+                                                <img src={{ asset('images/edit-icon.png') }} class="link-open-in-new-page" alt="Efekty przedmiot">
+                                            </a>
+                                            @else
+                                            -
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{route('render', ['id' => $s->id, 'subject_name' => $s->name_subject])}}">
+                                                <img src={{ asset('images/see.png') }} class="link-open-in-new-page" >
+                                            </a>
+                                        </td>
                                     </tr>                                
                                     @empty
                                     <div class="alert">Brak pasujących wyników</div>
